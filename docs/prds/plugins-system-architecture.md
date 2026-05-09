@@ -1,8 +1,25 @@
 # PRD — Plugins System Architecture
 
-**Status:** Draft (2026-04-28) — Architectural proposal for maintainer review
+**Status:** Approved for v1 implementation (2026-05-09) — see Decisions log below
 **Related:** [Issue #106](https://github.com/brianbruff/openhpsdr-zeus/issues/106) (websocket host isolation)
 **Authors:** Research and synthesis for Brian Keating (EI6LF) review
+
+---
+
+## Decisions log (2026-05-09)
+
+The §8.2 open questions have been answered by the maintainer. Performance is the load-bearing constraint: the v1 system must not introduce IPC overhead in any hot path.
+
+| Question | Decision | Rationale |
+|---|---|---|
+| Process isolation in v1? | **In-process only** (AssemblyLoadContext) | Process isolation adds 50–200 µs per call — incompatible with audio / panadapter / VFO hot paths. Defer to v2 if/when an untrusted plugin actually needs it. |
+| Extension points for v1 | **HTTP endpoints, radio events, UI panels, audio processors** | All four. Audio processor must document strict zero-allocation, sync-only contract — no async, no I/O. |
+| Permission model | **Opt-in capability-based** | Manifest declares required capabilities (ReadRadioState, ControlRadio, NetworkAccess, etc.); user prompted on first install. `IPluginContext` exposes ungranted subsystems as `null` so checks are compile-time / zero-cost. |
+| UI runtime | **Shared React via Vite externals + import map** | Single React/Zustand instance across host + plugins; no bundle duplication; HMR keeps working. Plugins must pin to host's React major version. |
+| Plugin directory | **Per-platform XDG dirs** | Linux `~/.local/share/zeus/plugins/`, macOS `~/Library/Application Support/Zeus/plugins/`, Windows `%APPDATA%\Zeus\plugins\`. Survives Zeus upgrades. |
+| Repo structure | **Monorepo `OpenHpsdr-Zeus.Plugins` (sister repo)** | First-party plugins (rotator, future TCI/MIDI/etc.) ship together with shared CI; per-plugin repos are a possible future migration once a real third-party ecosystem exists. |
+
+**Implementation roadmap (v1):** four ordered PRs over ~5–6 weeks. PR-A foundation (contracts + PluginManager + ALC scan + safe-mode). PR-B capabilities + permissions + per-plugin settings store. PR-C UI integration (Vite externals + dynamic import + PANELS merge + plugins settings panel). PR-D create the `OpenHpsdr-Zeus.Plugins` sister repo and extract the in-tree rotator as the first plugin.
 
 ---
 
@@ -1154,18 +1171,16 @@ public class PluginSettingsStore
 5. **Slow adoption** (no one writes plugins) → Mitigation: excellent docs, templates, sample plugins, maintainer writes first 3 plugins (MIDI, FT8, logging) to prove ecosystem.
 6. **Process isolation adds 6–8 weeks** → Mitigation: defer to v2.0 if schedule slips; v1.0 ships in-process only.
 
-### 8.2 Open questions (for maintainer decision)
+### 8.2 Open questions — RESOLVED 2026-05-09
 
-1. **Is process isolation required for v1.0?** Or can we ship in-process only, defer isolation to v2.0?
-2. **Which extension points are must-have for v1.0?** (Radio events? HTTP endpoints? UI panels? Audio processing?)
-3. **Plugin directory location:**
-   - `~/.local/share/zeus/plugins/` (Linux FHS)
-   - `%APPDATA%/Zeus/plugins/` (Windows)
-   - `~/Library/Application Support/Zeus/plugins/` (macOS)
-   - Or next to `appsettings.json` (portable, but clutters install dir)?
-4. **Permission model: opt-in or opt-out?** Should plugins start with zero capabilities (must request each), or full access (user must deny)?
-5. **UI framework for plugin panels:** React (matches zeus-web), or web components (plugin-agnostic)?
-6. **Auto-update:** Should Zeus phone home to check for plugin updates, or manual-only?
+See the Decisions log at the top of this document for rationale.
+
+1. ~~Process isolation in v1?~~ → **In-process only**, defer isolation to v2.
+2. ~~Extension points for v1?~~ → **HTTP endpoints, radio events, UI panels, audio processors** (audio processor with zero-alloc / sync-only contract).
+3. ~~Plugin directory location?~~ → **Per-platform XDG dirs**.
+4. ~~Permission model?~~ → **Opt-in capability-based**.
+5. ~~UI framework?~~ → **Shared React via Vite externals**.
+6. **Auto-update:** Deferred. Manual install for v1; revisit when there are >5 plugins in the wild.
 
 ## 9. Success metrics
 
