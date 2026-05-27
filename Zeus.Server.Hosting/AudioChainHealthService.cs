@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Zeus.Contracts;
 using Zeus.Dsp;
+using Zeus.Server.AudioChainHealth;
 
 namespace Zeus.Server;
 
@@ -19,12 +20,14 @@ namespace Zeus.Server;
 /// <c>TxMetersV2</c> / <c>PaTemp</c> frames; the factory widget joins on
 /// <see cref="AudioChainStageId"/> in the frontend.
 ///
-/// This file is the skeleton: 2 Hz tick + broadcast wiring + 9-stage
-/// stub that emits all-OK verdicts. The rule evaluator + sustained-
-/// violation/hysteresis machinery + Thetis-seeded thresholds land in
-/// follow-up issues (zeus-w7x → zeus-1x4 → zeus-y89). Apply targets are
-/// kept in-process and consumed by the apply endpoint
-/// (<c>POST /api/audio-chain/apply</c>, zeus-pgn).
+/// The base rule set + per-context overrides (zeus-1x4, zeus-y89) are
+/// injected via <see cref="IAudioChainRuleProvider"/> so the engine
+/// stays decoupled from the concrete thresholds. With an empty rule
+/// set the service still ticks and broadcasts — every tile reads OK.
+///
+/// Apply targets are kept in-process per stage and exposed via
+/// <see cref="TryGetApplyAction"/> for the apply endpoint to consume
+/// (zeus-pgn).
 /// </summary>
 public sealed class AudioChainHealthService : BackgroundService
 {
@@ -37,10 +40,11 @@ public sealed class AudioChainHealthService : BackgroundService
     private readonly RadioService _radio;
     private readonly TxService _tx;
     private readonly DspPipelineService _pipe;
+    private readonly IAudioChainRuleProvider _rules;
     private readonly ILogger<AudioChainHealthService> _log;
+    private readonly RuleEvaluator _evaluator = new();
 
     // The fixed nine-tile order the factory widget renders left-to-right.
-    // Per the design handoff bundle (Direction A).
     private static readonly AudioChainStageId[] Stages =
     {
         AudioChainStageId.Mic,
@@ -54,24 +58,44 @@ public sealed class AudioChainHealthService : BackgroundService
         AudioChainStageId.Pa,
     };
 
+    // Apply-target cache. The wire never carries the absolute value —
+    // the operator clicks Apply, POST /api/audio-chain/apply { stageId }
+    // looks here, and the dispatcher (zeus-pgn) routes Kind to the
+    // matching backend setter.
+    private readonly Dictionary<AudioChainStageId, AudioChainApplyAction> _applyCache = new();
+    private readonly object _applySync = new();
+
     public AudioChainHealthService(
         StreamingHub hub,
         RadioService radio,
         TxService tx,
         DspPipelineService pipe,
+        IAudioChainRuleProvider rules,
         ILogger<AudioChainHealthService> log)
     {
         _hub = hub;
         _radio = radio;
         _tx = tx;
         _pipe = pipe;
+        _rules = rules;
         _log = log;
+    }
+
+    /// <summary>
+    /// Look up the current absolute apply target for a stage. Returns
+    /// false if the stage has no fired apply-capable verdict at the
+    /// moment — the apply endpoint should reject with 404 in that case.
+    /// </summary>
+    public bool TryGetApplyAction(AudioChainStageId stage, out AudioChainApplyAction action)
+    {
+        lock (_applySync)
+        {
+            return _applyCache.TryGetValue(stage, out action);
+        }
     }
 
     protected override async Task ExecuteAsync(CancellationToken ct)
     {
-        // Skeleton: tick at 2 Hz, build a stub frame with nine OK
-        // verdicts, broadcast. Rule eval is wired in by zeus-w7x.
         var ticker = new PeriodicTimer(Tick);
         try
         {
@@ -79,7 +103,7 @@ public sealed class AudioChainHealthService : BackgroundService
             {
                 try
                 {
-                    var frame = BuildSnapshot();
+                    var frame = BuildSnapshot(DateTime.UtcNow);
                     _hub.Broadcast(frame);
                 }
                 catch (Exception ex)
@@ -97,27 +121,112 @@ public sealed class AudioChainHealthService : BackgroundService
         }
     }
 
-    private AudioChainHealthFrame BuildSnapshot()
+    internal AudioChainHealthFrame BuildSnapshot(DateTime nowUtc)
     {
         var state = _radio.Snapshot();
-        // Read the WDSP stage meters once per tick. The engine returns
-        // Silent (-∞ levels, 0 GR) when TXA is idle, which the rule
-        // engine (next issue) will interpret as "awaiting mox" /
-        // bypassed and surface as Info — not Warn.
         var stages = _pipe.CurrentEngine?.GetTxStageMeters() ?? TxStageMeters.Silent;
         bool mox = _tx.IsMoxOn || _tx.IsTunOn;
 
-        // Stub: every tile reports OK. The rule engine (zeus-w7x) replaces
-        // this with sustained-violation-gated verdicts that read `stages`,
-        // `mox`, `state.Mode`, and the connected board kind.
-        _ = stages;
-        _ = mox;
+        var readings = AudioChainReadings.FromTxStageMeters(
+            s: stages,
+            drivePct: state.DrivePct,
+            // DriveByte not yet on the in-process surface for the
+            // service to read — placeholder until the wire promotion
+            // (zeus-pgn area). 0 is a safe sentinel; the Wire rule
+            // (zeus-1x4) will guard against it.
+            driveByte: 0,
+            // FWD/REF/SWR live in TxMetersService's local smoothing
+            // state — not exposed yet. Until promoted, fall back to
+            // safe defaults so PA rules with hysteresis don't latch
+            // false-warns. Tracked under the same in-process-state
+            // promotion work as drive byte.
+            fwdWatts: 0f,
+            refWatts: 0f,
+            swr: 1.0f);
+        var ctx = new RuleContext(
+            Mode: state.Mode,
+            Board: _radio.ConnectedBoardKind,
+            Mox: mox);
+
+        var fired = _evaluator.Evaluate(_rules.Rules, in readings, in ctx, nowUtc);
+
+        // Worst-severity-per-stage wins; the wire carries exactly one
+        // verdict per stage (the factory widget renders one pill per
+        // tile). The advisory rail surfaces the top three by severity
+        // — that's a frontend concern, but the wire still needs to be
+        // unambiguous about which verdict belongs to each tile.
+        var worstPerStage = new Dictionary<AudioChainStageId, FiredRule>();
+        foreach (var f in fired)
+        {
+            if (!worstPerStage.TryGetValue(f.Rule.Stage, out var existing) ||
+                SeverityRank(f.Rule) > SeverityRank(existing.Rule))
+            {
+                worstPerStage[f.Rule.Stage] = f;
+            }
+        }
+
+        // Apply-cache snapshot. Rebuild from scratch each tick so a
+        // cleared verdict doesn't leave a stale target behind.
+        lock (_applySync)
+        {
+            _applyCache.Clear();
+            foreach (var (stage, f) in worstPerStage)
+            {
+                if (f.Apply is { } a)
+                    _applyCache[stage] = a;
+            }
+        }
 
         var verdicts = new AudioChainVerdict[Stages.Length];
         for (int i = 0; i < Stages.Length; i++)
         {
-            verdicts[i] = AudioChainVerdict.Ok(Stages[i]);
+            var id = Stages[i];
+            if (worstPerStage.TryGetValue(id, out var f))
+            {
+                var flags = AudioChainVerdictFlags.None;
+                if (f.Rule.ImmediateAction) flags |= AudioChainVerdictFlags.ImmediateAction;
+                if (f.Apply is not null) flags |= AudioChainVerdictFlags.HasApply;
+                verdicts[i] = new AudioChainVerdict(
+                    StageId: id,
+                    Severity: f.Rule.Severity,
+                    Flags: flags,
+                    Message: f.Message,
+                    ApplyLabel: f.ApplyLabel);
+            }
+            else
+            {
+                verdicts[i] = AudioChainVerdict.Ok(id);
+            }
         }
         return new AudioChainHealthFrame(state.Mode, verdicts);
     }
+
+    private static int SeverityRank(AudioChainRule r) =>
+        r.Severity == AudioChainSeverity.Error
+            ? (r.ImmediateAction ? 4 : 3)
+            : r.Severity == AudioChainSeverity.Warn
+                ? 2
+                : r.Severity == AudioChainSeverity.Info
+                    ? 1
+                    : 0;
+}
+
+/// <summary>
+/// Source of truth for the active rule set. Injected so tests can
+/// supply a fixture rule list and the runtime service can build the
+/// base set + per-context overrides separately (zeus-1x4 / zeus-y89).
+/// </summary>
+public interface IAudioChainRuleProvider
+{
+    IReadOnlyList<AudioChainRule> Rules { get; }
+}
+
+/// <summary>
+/// Default provider — exposes an empty rule set so the service is
+/// fully wired before the base rule set lands. Replaced by the
+/// concrete provider in zeus-1x4.
+/// </summary>
+public sealed class EmptyAudioChainRuleProvider : IAudioChainRuleProvider
+{
+    public IReadOnlyList<AudioChainRule> Rules { get; } = Array.Empty<AudioChainRule>();
 }
