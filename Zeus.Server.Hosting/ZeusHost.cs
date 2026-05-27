@@ -252,8 +252,9 @@ public static class ZeusHost
         // Audio Chain Monitor (core diagnostic per ADR-0001). Always-on 2 Hz
         // verdict overlay published on the AudioChainHealth (0x32) WS frame.
         // BaseRules (zeus-1x4) provides the SSB+MOX-gated v1 rule set;
-        // per-(mode, board) overrides land in zeus-y89.
-        builder.Services.AddSingleton<IAudioChainRuleProvider, BaseAudioChainRuleProvider>();
+        // PerContextOverrides (zeus-y89) layers CW / FM / Digital / AM /
+        // HL2 behaviour on top via the composite provider.
+        builder.Services.AddSingleton<IAudioChainRuleProvider, BaseAndContextOverrideRuleProvider>();
         builder.Services.AddSingleton<AudioChainHealthService>();
         builder.Services.AddHostedService(sp => sp.GetRequiredService<AudioChainHealthService>());
         // TxTuneDriver pumps silent mic blocks through WDSP TXA while TUN is on so
