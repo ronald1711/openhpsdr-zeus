@@ -22,7 +22,8 @@ public class RuleEvaluatorTests
         AlcPk: 0, AlcAv: 0, AlcGr: 0,
         OutPk: 0, OutAv: 0,
         DrivePct: 50, DriveByte: 128,
-        FwdWatts: 0, RefWatts: 0, Swr: 1f);
+        FwdWatts: 0, RefWatts: 0, Swr: 1f,
+        MicGainDb: 0, LevelerMaxGainDb: 8, CfcPreCompDb: 0);
 
     private static AudioChainReadings ReadingsWithSwr(float swr) => new(
         MicPk: -24, MicAv: -24,
@@ -33,7 +34,8 @@ public class RuleEvaluatorTests
         AlcPk: 0, AlcAv: 0, AlcGr: 0,
         OutPk: 0, OutAv: 0,
         DrivePct: 50, DriveByte: 128,
-        FwdWatts: 50, RefWatts: 0, Swr: swr);
+        FwdWatts: 50, RefWatts: 0, Swr: swr,
+        MicGainDb: 0, LevelerMaxGainDb: 8, CfcPreCompDb: 0);
 
     private static RuleContext SsbCtx => new(RxMode.USB, HpsdrBoardKind.HermesLite2, Mox: true);
 

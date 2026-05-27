@@ -11,6 +11,7 @@ using Zeus.Dsp;
 using Zeus.Dsp.Wdsp;
 using Zeus.Protocol1;
 using Zeus.Protocol1.Discovery;
+using Zeus.Server.AudioChainHealth;
 using Zeus.Server.Tci;
 
 namespace Zeus.Server;
@@ -733,6 +734,42 @@ public static class ZeusEndpoints
             return Results.Ok(r.SetCfc(req));
         });
 
+        // Audio Chain Monitor — one-click apply (zeus-pgn). The operator
+        // clicks Apply on a verdict; the body carries only the StageId.
+        // The dispatcher reads the current absolute target value from
+        // AudioChainHealthService's apply cache and routes it to the
+        // matching backend setter. Per ADR-0003: targets are absolute
+        // (set value, not delta), so clicking twice on the same verdict
+        // is idempotent.
+        //   - 404: no active apply target for that stage right now
+        //          (verdict cleared between fire and click — common at
+        //          the edge of a sustained window).
+        //   - 400: unknown Kind in the apply cache (would indicate a
+        //          rule registered a Kind the dispatcher doesn't know
+        //          how to route).
+        app.MapPost("/api/audio-chain/apply", (AudioChainApplyRequest req, AudioChainHealthService svc, RadioService r) =>
+        {
+            if (!svc.TryGetApplyAction(req.StageId, out var action))
+            {
+                return Results.NotFound(new
+                {
+                    error = $"no apply target active for stage {req.StageId}",
+                });
+            }
+            log.LogInformation(
+                "api.audio-chain.apply stage={Stage} kind={Kind} value={Value}",
+                req.StageId, action.Kind, action.Value);
+            try
+            {
+                ApplyAudioChainAction(action, r);
+            }
+            catch (NotSupportedException ex)
+            {
+                return Results.BadRequest(new { error = ex.Message });
+            }
+            return Results.Ok(new AudioChainApplyResponse(action.Kind, action.Value));
+        });
+
         app.MapPost("/api/rx/zoom", (ZoomSetRequest req, RadioService r) =>
         {
             log.LogInformation("api.rx.zoom level={Level}", req.Level);
@@ -1427,6 +1464,55 @@ public static class ZeusEndpoints
         384_000 => HpsdrSampleRate.Rate384k,
         _ => throw new ArgumentOutOfRangeException(nameof(hz), hz, "validate before calling"),
     };
+
+    // Audio Chain Monitor apply-action dispatcher (zeus-pgn). Routes an
+    // (Kind, Value) absolute-target pair from a fired rule to an
+    // existing RadioService setter. Kind discriminators are owned by
+    // the base rule set (and per-context overrides, zeus-y89); adding a
+    // new Kind requires both the producing rule and a branch here. Any
+    // unhandled Kind throws NotSupportedException, which the endpoint
+    // surfaces as 400 — defends against rules that ship a Kind the
+    // dispatcher doesn't know how to route.
+    internal static void ApplyAudioChainAction(AudioChainApplyAction action, RadioService radio)
+    {
+        switch (action.Kind)
+        {
+            case "tx.mic-gain-db":
+                // SetTxMicGain clamps to [-40, +10] internally — we
+                // trust that range and just round-cast here. Rules
+                // pre-clamp before producing the apply target so this
+                // is defence in depth.
+                radio.SetTxMicGain((int)Math.Round(action.Value));
+                break;
+
+            case "tx.leveler-max-gain-db":
+                // SetTxLevelerMaxGain clamps to [0, 15] internally.
+                radio.SetTxLevelerMaxGain(action.Value);
+                break;
+
+            case "tx.cfc-pre-comp-db":
+            {
+                // CFC PreCompDb is a field on the full CfcConfig record.
+                // We can't set it in isolation — read the current
+                // config, swap the one field, push the whole config
+                // back through SetCfc. If CFC isn't configured yet,
+                // start from CfcConfig.Default.
+                var snap = radio.Snapshot();
+                var current = snap.Cfc ?? CfcConfig.Default;
+                var next = current with { PreCompDb = action.Value };
+                radio.SetCfc(new CfcSetRequest(next));
+                break;
+            }
+
+            case "tx.drive-pct":
+                radio.SetDrive((int)Math.Round(action.Value));
+                break;
+
+            default:
+                throw new NotSupportedException(
+                    $"audio-chain apply: unknown action kind '{action.Kind}'");
+        }
+    }
 }
 
 internal sealed record NativeMuteRequest(bool Muted);

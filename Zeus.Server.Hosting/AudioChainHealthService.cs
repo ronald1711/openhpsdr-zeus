@@ -180,7 +180,10 @@ public sealed class AudioChainHealthService : BackgroundService
             driveByte: 0,
             fwdWatts: fwdW,
             refWatts: refW,
-            swr: swr);
+            swr: swr,
+            micGainDb: state.MicGainDb,
+            levelerMaxGainDb: state.LevelerMaxGainDb,
+            cfcPreCompDb: state.Cfc?.PreCompDb ?? 0);
         var ctx = new RuleContext(
             Mode: state.Mode,
             Board: _radio.ConnectedBoardKind,

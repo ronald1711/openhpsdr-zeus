@@ -22,7 +22,8 @@ public class BaseRulesTests
         AlcPk: -6, AlcAv: -6, AlcGr: 1,
         OutPk: -3, OutAv: -3,
         DrivePct: 60, DriveByte: 0,
-        FwdWatts: 80, RefWatts: 2, Swr: 1.2f);
+        FwdWatts: 80, RefWatts: 2, Swr: 1.2f,
+        MicGainDb: 4, LevelerMaxGainDb: 8, CfcPreCompDb: 0);
 
     private static RuleContext SsbCtxMox => new(RxMode.USB, HpsdrBoardKind.HermesLite2, Mox: true);
     private static RuleContext SsbCtxRx => new(RxMode.USB, HpsdrBoardKind.HermesLite2, Mox: false);
@@ -95,7 +96,9 @@ public class BaseRulesTests
         var mic = fired.First(f => f.Rule.Name == "mic.low");
         Assert.Equal(AudioChainSeverity.Warn, mic.Rule.Severity);
         Assert.NotNull(mic.Apply);
-        Assert.Equal("tx.mic-av-target-dbfs", mic.Apply!.Value.Kind);
+        Assert.Equal("tx.mic-gain-db", mic.Apply!.Value.Kind);
+        // Apply target = clamp(currentMicGainDb + 6) = 4 + 6 = 10.
+        Assert.Equal(10, mic.Apply!.Value.Value);
     }
 
     [Fact]
@@ -112,7 +115,7 @@ public class BaseRulesTests
         Assert.True(alc.Rule.ImmediateAction);
         Assert.Equal(AudioChainSeverity.Error, alc.Rule.Severity);
         Assert.NotNull(alc.Apply);
-        Assert.Equal("tx.drive-pct-target", alc.Apply!.Value.Kind);
+        Assert.Equal("tx.drive-pct", alc.Apply!.Value.Kind);
         // Apply target should be current drive - 15, but not below 1.
         Assert.Equal(45, alc.Apply!.Value.Value);  // 60 − 15
     }

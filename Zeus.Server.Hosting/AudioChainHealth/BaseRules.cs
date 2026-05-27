@@ -106,12 +106,12 @@ public static class BaseRules
         ExitThreshold = -36,
         Direction = TripDirection.Below,
         Message = (r, _) => FormattableString.Invariant(
-            $"Mic too low — average {r.MicAv:F0} dBFS. Raise mic gain to land near −24 dBFS."),
-        ApplyLabel = (_, _) => "Apply · target −24 dBFS",
-        // Target value is the desired average, not the gain delta.
-        // The dispatcher (zeus-pgn) translates this into the right
-        // mic-gain change based on the current mic level.
-        Apply = (_, _) => new AudioChainApplyAction("tx.mic-av-target-dbfs", -24),
+            $"Mic too low — average {r.MicAv:F0} dBFS. Raise mic gain ~6 dB."),
+        ApplyLabel = (r, _) => FormattableString.Invariant(
+            $"Apply · mic gain {r.MicGainDb} → {Math.Clamp(r.MicGainDb + 6, -40, 10)} dB"),
+        Apply = (r, _) => new AudioChainApplyAction(
+            "tx.mic-gain-db",
+            Math.Clamp(r.MicGainDb + 6, -40, 10)),
     };
 
     private static AudioChainRule MicHot() => new()
@@ -127,9 +127,12 @@ public static class BaseRules
         ExitThreshold = -6,
         Direction = TripDirection.Above,
         Message = (r, _) => FormattableString.Invariant(
-            $"Mic too hot — peaks at {r.MicPk:F0} dBFS. Back off mic gain."),
-        ApplyLabel = (_, _) => "Apply · target −24 dBFS",
-        Apply = (_, _) => new AudioChainApplyAction("tx.mic-av-target-dbfs", -24),
+            $"Mic too hot — peaks at {r.MicPk:F0} dBFS. Back off mic gain ~6 dB."),
+        ApplyLabel = (r, _) => FormattableString.Invariant(
+            $"Apply · mic gain {r.MicGainDb} → {Math.Clamp(r.MicGainDb - 6, -40, 10)} dB"),
+        Apply = (r, _) => new AudioChainApplyAction(
+            "tx.mic-gain-db",
+            Math.Clamp(r.MicGainDb - 6, -40, 10)),
     };
 
     // ---------------------------------------------------------------
@@ -193,8 +196,11 @@ public static class BaseRules
         Direction = TripDirection.Above,
         Message = (r, _) => FormattableString.Invariant(
             $"CFC pumping — gain reduction {r.CfcGr:F0} dB. Lower CFC drive ~3 dB."),
-        ApplyLabel = (_, _) => "Apply · CFC drive −3 dB",
-        Apply = (_, _) => new AudioChainApplyAction("tx.cfc-drive-delta-db", -3),
+        ApplyLabel = (r, _) => FormattableString.Invariant(
+            $"Apply · CFC drive {r.CfcPreCompDb:F0} → {Math.Max(0, r.CfcPreCompDb - 3):F0} dB"),
+        Apply = (r, _) => new AudioChainApplyAction(
+            "tx.cfc-pre-comp-db",
+            Math.Max(0, r.CfcPreCompDb - 3)),
     };
 
     // ---------------------------------------------------------------
@@ -239,9 +245,10 @@ public static class BaseRules
         Direction = TripDirection.Above,
         Message = (r, _) => FormattableString.Invariant(
             $"Clipping — ALC peak {r.AlcPk:F1} dBFS. Distorted on-air. Lower drive immediately."),
-        ApplyLabel = (_, _) => "Apply · drive −15",
+        ApplyLabel = (r, _) => FormattableString.Invariant(
+            $"Apply · drive {r.DrivePct} → {Math.Max(1, r.DrivePct - 15)}%"),
         Apply = (r, _) => new AudioChainApplyAction(
-            "tx.drive-pct-target",
+            "tx.drive-pct",
             Math.Max(1, r.DrivePct - 15)),
         // ALC clip is severe enough that the default 5 s error window
         // is too slow — fire after 1.5 s so the operator sees it

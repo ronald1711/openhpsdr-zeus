@@ -42,7 +42,15 @@ public readonly record struct AudioChainReadings(
     int DriveByte,
     float FwdWatts,
     float RefWatts,
-    float Swr)
+    float Swr,
+    // Current parameter values — surfaced so rules can compute
+    // absolute apply targets (per ADR-0003). The Apply payload is
+    // an absolute setter value, not a delta; rules need to know the
+    // current value to compute the absolute target. Source: the
+    // service reads these from RadioService.Snapshot() each tick.
+    int MicGainDb,
+    double LevelerMaxGainDb,
+    double CfcPreCompDb)
 {
     /// <summary>
     /// "Stage is bypassed / sentinel" predicate. WDSP returns ≤ -200 dBFS
@@ -59,7 +67,10 @@ public readonly record struct AudioChainReadings(
         int driveByte,
         float fwdWatts,
         float refWatts,
-        float swr) =>
+        float swr,
+        int micGainDb,
+        double levelerMaxGainDb,
+        double cfcPreCompDb) =>
         new(
             MicPk: s.MicPk, MicAv: s.MicAv,
             EqPk: s.EqPk, EqAv: s.EqAv,
@@ -69,7 +80,10 @@ public readonly record struct AudioChainReadings(
             AlcPk: s.AlcPk, AlcAv: s.AlcAv, AlcGr: s.AlcGr,
             OutPk: s.OutPk, OutAv: s.OutAv,
             DrivePct: drivePct, DriveByte: driveByte,
-            FwdWatts: fwdWatts, RefWatts: refWatts, Swr: swr);
+            FwdWatts: fwdWatts, RefWatts: refWatts, Swr: swr,
+            MicGainDb: micGainDb,
+            LevelerMaxGainDb: levelerMaxGainDb,
+            CfcPreCompDb: cfcPreCompDb);
 }
 
 /// <summary>
