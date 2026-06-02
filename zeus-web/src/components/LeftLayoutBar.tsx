@@ -90,6 +90,7 @@ export function LeftLayoutBar() {
       addLayout(value.name, {
         icon: value.icon || undefined,
         description: value.description || undefined,
+        template: value.template || undefined,
       });
     } else if (modal.kind === 'edit') {
       updateLayoutMeta(modal.id, {

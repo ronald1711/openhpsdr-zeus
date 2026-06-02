@@ -55,10 +55,8 @@ describe('AddPanelModal', () => {
     const cards = container.querySelectorAll(
       '[data-testid="add-panel-cards"] .add-panel-card',
     );
-    // 21 panels in registry (CW Decoder added in zeus-cdn; RF-2K panel was
-    // extracted to a plugin; Rotator Dial was added in #385; WAV recorder
-    // added in #579).
-    expect(cards.length).toBe(21);
+    // 24 panels in registry (including new modular panels: AGC, AF Gain, Front-End).
+    expect(cards.length).toBe(24);
     unmount();
   });
 

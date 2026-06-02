@@ -51,3 +51,39 @@ export const DEFAULT_WORKSPACE_LAYOUT: WorkspaceLayout = {
     { uid: 'tile-dsp',      panelId: 'dsp',      x: 9, y: 17, w: 3, h: 7 },
   ],
 };
+
+export const THETIS_CLASSIC_LAYOUT: WorkspaceLayout = {
+  schemaVersion: 7,
+  tiles: [
+    { uid: 'tile-vfo',      panelId: 'vfo',      x: 0, y: 0,  w: 4, h: 4 },
+    { uid: 'tile-smeter',   panelId: 'smeter',   x: 4, y: 0,  w: 4, h: 2 },
+    { uid: 'tile-filter',   panelId: 'filter',   x: 4, y: 2,  w: 4, h: 4 },
+    { uid: 'tile-tx',       panelId: 'tx',       x: 8, y: 0,  w: 4, h: 5 },
+    { uid: 'tile-txmeters', panelId: 'txmeters', x: 8, y: 5,  w: 4, h: 5 },
+    { uid: 'tile-dsp',      panelId: 'dsp',      x: 0, y: 4,  w: 4, h: 6 },
+    { uid: 'tile-hero',     panelId: 'hero',     x: 0, y: 10, w: 12, h: 14 },
+  ],
+};
+
+export const SDRUNO_COMPACT_LAYOUT: WorkspaceLayout = {
+  schemaVersion: 7,
+  tiles: [
+    { uid: 'tile-vfo',      panelId: 'vfo',      x: 0, y: 0,  w: 3, h: 4 },
+    { uid: 'tile-smeter',   panelId: 'smeter',   x: 0, y: 4,  w: 3, h: 2 },
+    { uid: 'tile-tx',       panelId: 'tx',       x: 0, y: 6,  w: 3, h: 5 },
+    { uid: 'tile-dsp',      panelId: 'dsp',      x: 0, y: 11, w: 3, h: 7 },
+    { uid: 'tile-txmeters', panelId: 'txmeters', x: 0, y: 18, w: 3, h: 6 },
+    { uid: 'tile-hero',     panelId: 'hero',     x: 3, y: 0,  w: 9, h: 18 },
+    { uid: 'tile-filter',   panelId: 'filter',   x: 3, y: 18, w: 9, h: 6 },
+  ],
+};
+
+export const SIMPLE_MOBI_PRESET_LAYOUT: WorkspaceLayout = {
+  schemaVersion: 7,
+  tiles: [
+    { uid: 'tile-vfo',      panelId: 'vfo',      x: 0, y: 0,  w: 6, h: 5 },
+    { uid: 'tile-smeter',   panelId: 'smeter',   x: 6, y: 0,  w: 6, h: 2 },
+    { uid: 'tile-dsp',      panelId: 'dsp',      x: 6, y: 2,  w: 6, h: 3 },
+    { uid: 'tile-hero',     panelId: 'hero',     x: 0, y: 5,  w: 12, h: 19 },
+  ],
+};

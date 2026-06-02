@@ -80,7 +80,7 @@ public sealed class ThemeSettingsStore : IDisposable
     private static string NormalizeTheme(string? raw) =>
         raw switch
         {
-            "dark" or "light" => raw,
+            "dark" or "light" or "classic" => raw,
             _ => "dark",
         };
 

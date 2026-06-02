@@ -8,7 +8,7 @@
 // so the look-and-feel follows them across browsers + devices.
 // Mirrors src/api/nrUiPrefs.ts; same minimal-API call shape.
 
-export type ThemeIdRaw = 'dark' | 'light';
+export type ThemeIdRaw = 'dark' | 'light' | 'classic';
 
 export type ThemeSettingsState = {
   theme: ThemeIdRaw;
@@ -21,7 +21,7 @@ type ThemeSettingsDtoRaw = {
 };
 
 function normalize(raw: ThemeSettingsDtoRaw): ThemeSettingsState {
-  const theme: ThemeIdRaw = raw.theme === 'light' ? 'light' : 'dark';
+  const theme: ThemeIdRaw = raw.theme === 'light' ? 'light' : raw.theme === 'classic' ? 'classic' : 'dark';
   const overrides: Record<string, string> = {};
   if (raw.overrides) {
     for (const [k, v] of Object.entries(raw.overrides)) {

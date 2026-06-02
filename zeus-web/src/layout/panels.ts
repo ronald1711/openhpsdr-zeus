@@ -64,6 +64,9 @@ import { StepPanel } from './panels/StepPanel';
 import { MeterGroupPanel } from '../components/meter-group/MeterGroupPanel';
 import { AnalogMeterPanel } from './panels/AnalogMeterPanel';
 import { WavRecorderPanel } from './panels/WavRecorderPanel';
+import { AgcPanel } from './panels/AgcPanel';
+import { AfGainPanel } from './panels/AfGainPanel';
+import { FrontEndPanel } from './panels/FrontEndPanel';
 
 export type PanelCategory =
   | 'spectrum'
@@ -323,6 +326,30 @@ export const PANELS: Record<string, PanelDef> = {
     tags: ['analog', 'meter', 'smeter', 's-meter', 'signal', 'rx', 'tx', 'power', 'swr', 'needle'],
     component: AnalogMeterPanel,
     headerless: true,
+  },
+  agc: {
+    id: 'agc',
+    name: 'AGC Decay',
+    category: 'controls',
+    tags: ['agc', 'decay', 'slider', 'gain'],
+    component: AgcPanel,
+    maxW: 3,
+  },
+  afgain: {
+    id: 'afgain',
+    name: 'AF Gain',
+    category: 'controls',
+    tags: ['af', 'gain', 'volume', 'slider'],
+    component: AfGainPanel,
+    maxW: 3,
+  },
+  frontend: {
+    id: 'frontend',
+    name: 'Front-End (Preamp / Attenuator)',
+    category: 'controls',
+    tags: ['frontend', 'preamp', 'attenuator', 'gain'],
+    component: FrontEndPanel,
+    maxW: 3,
   },
 };
 

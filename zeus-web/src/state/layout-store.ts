@@ -25,7 +25,12 @@ import {
   type WorkspaceLayout,
   type WorkspaceTile,
 } from '../layout/workspace';
-import { DEFAULT_WORKSPACE_LAYOUT } from '../layout/defaultLayout';
+import {
+  DEFAULT_WORKSPACE_LAYOUT,
+  THETIS_CLASSIC_LAYOUT,
+  SDRUNO_COMPACT_LAYOUT,
+  SIMPLE_MOBI_PRESET_LAYOUT,
+} from '../layout/defaultLayout';
 
 export interface NamedLayout {
   id: string;
@@ -99,7 +104,7 @@ interface LayoutState {
   // Layout-level mutators (LeftLayoutBar API):
   /** Create a new layout for the current radio, seeded from
    *  DEFAULT_WORKSPACE_LAYOUT, and switch to it. Returns the new id. */
-  addLayout: (name: string, meta?: { icon?: string; description?: string }) => string;
+  addLayout: (name: string, meta?: { icon?: string; description?: string; template?: string }) => string;
   /** Delete a layout. If it was active, the server promotes the first
    *  remaining layout to active; if there are zero remaining the client
    *  re-seeds Default. */
@@ -133,6 +138,18 @@ interface LayoutState {
   // Back-compat surface (still used by SettingsMenu before #241 lands the
   // LeftLayoutBar). resetLayout calls resetActiveLayout.
   resetLayout: () => void;
+
+  showTopbar: boolean;
+  visibleToolbarControls: string[];
+  setShowTopbar: (show: boolean) => void;
+  setVisibleToolbarControls: (controls: string[]) => void;
+
+  compactType: 'vertical' | null;
+  preventCollision: boolean;
+  customMargin: number;
+  setCompactType: (type: 'vertical' | null) => void;
+  setPreventCollision: (prevent: boolean) => void;
+  setCustomMargin: (margin: number) => void;
 }
 
 const DEFAULT_LAYOUT_ID = 'default';
@@ -163,6 +180,56 @@ function parseLayoutOrDefault(json: string): WorkspaceLayout {
 
 function findActive(layouts: NamedLayout[], id: string): NamedLayout | undefined {
   return layouts.find((l) => l.id === id);
+}
+
+function readShowTopbar(): boolean {
+  try {
+    if (typeof localStorage === 'undefined') return true;
+    const raw = localStorage.getItem('zeus.showTopbar');
+    return raw === null ? true : raw === 'true';
+  } catch {
+    return true;
+  }
+}
+
+function readVisibleToolbarControls(): string[] {
+  try {
+    if (typeof localStorage === 'undefined') return ['mode', 'filter', 'band', 'step', 'frontend', 'agc', 'af'];
+    const raw = localStorage.getItem('zeus.visibleToolbarControls');
+    return raw === null ? ['mode', 'filter', 'band', 'step', 'frontend', 'agc', 'af'] : JSON.parse(raw);
+  } catch {
+    return ['mode', 'filter', 'band', 'step', 'frontend', 'agc', 'af'];
+  }
+}
+
+function readCompactType(): 'vertical' | null {
+  try {
+    if (typeof localStorage === 'undefined') return 'vertical';
+    const raw = localStorage.getItem('zeus.workspace.compactType');
+    return raw === 'null' ? null : 'vertical';
+  } catch {
+    return 'vertical';
+  }
+}
+
+function readPreventCollision(): boolean {
+  try {
+    if (typeof localStorage === 'undefined') return false;
+    const raw = localStorage.getItem('zeus.workspace.preventCollision');
+    return raw === 'true';
+  } catch {
+    return false;
+  }
+}
+
+function readCustomMargin(): number {
+  try {
+    if (typeof localStorage === 'undefined') return -1;
+    const raw = localStorage.getItem('zeus.workspace.margin');
+    return raw === null ? -1 : parseInt(raw, 10);
+  } catch {
+    return -1;
+  }
 }
 
 export const useLayoutStore = create<LayoutState>((set, get) => ({
@@ -259,7 +326,12 @@ export const useLayoutStore = create<LayoutState>((set, get) => ({
 
   addLayout: (name, meta) => {
     const id = `layout-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
-    const json = serializeWorkspace(DEFAULT_WORKSPACE_LAYOUT);
+    let layoutObj = DEFAULT_WORKSPACE_LAYOUT;
+    if (meta?.template === 'thetis') layoutObj = THETIS_CLASSIC_LAYOUT;
+    else if (meta?.template === 'sdruno') layoutObj = SDRUNO_COMPACT_LAYOUT;
+    else if (meta?.template === 'simple') layoutObj = SIMPLE_MOBI_PRESET_LAYOUT;
+
+    const json = serializeWorkspace(layoutObj);
     const next: NamedLayout = {
       id,
       name: name || 'Untitled',
@@ -414,6 +486,43 @@ export const useLayoutStore = create<LayoutState>((set, get) => ({
   },
 
   resetLayout: () => get().resetActiveLayout(),
+
+  showTopbar: readShowTopbar(),
+  visibleToolbarControls: readVisibleToolbarControls(),
+  setShowTopbar: (show) => {
+    try {
+      localStorage.setItem('zeus.showTopbar', String(show));
+    } catch {}
+    set({ showTopbar: show });
+  },
+  setVisibleToolbarControls: (controls) => {
+    try {
+      localStorage.setItem('zeus.visibleToolbarControls', JSON.stringify(controls));
+    } catch {}
+    set({ visibleToolbarControls: controls });
+  },
+
+  compactType: readCompactType(),
+  preventCollision: readPreventCollision(),
+  customMargin: readCustomMargin(),
+  setCompactType: (compactType) => {
+    try {
+      localStorage.setItem('zeus.workspace.compactType', String(compactType));
+    } catch {}
+    set({ compactType });
+  },
+  setPreventCollision: (preventCollision) => {
+    try {
+      localStorage.setItem('zeus.workspace.preventCollision', String(preventCollision));
+    } catch {}
+    set({ preventCollision });
+  },
+  setCustomMargin: (customMargin) => {
+    try {
+      localStorage.setItem('zeus.workspace.margin', String(customMargin));
+    } catch {}
+    set({ customMargin });
+  },
 }));
 
 function applyWorkspaceMutation(

@@ -151,6 +151,12 @@ const THEME_OPTIONS: ReadonlyArray<{
     swatch: '#0a0a0c',
   },
   {
+    id: 'classic',
+    label: 'Classic Retro',
+    blurb: 'Tactile brushed-metal chassis with bright glowing vintage LED VFO readouts.',
+    swatch: '#14171d',
+  },
+  {
     id: 'light',
     label: 'Light',
     blurb: 'Brushed-silver chassis with dark display wells. Day-shack mode.',

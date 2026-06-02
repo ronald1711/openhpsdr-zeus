@@ -23,9 +23,12 @@ import {
   useContainerWidth,
   type Layout,
 } from 'react-grid-layout';
+
+const Grid = ResponsiveGridLayout as any;
 import { absoluteStrategy } from 'react-grid-layout/core';
 import { useWorkspace } from './WorkspaceContext';
 import { useLayoutStore } from '../state/layout-store';
+import { useThemeStore } from '../state/theme-store';
 import { getPanelDef } from './panels';
 import { usePluginPanels } from '../plugins/runtime/usePluginPanels';
 import {
@@ -134,10 +137,12 @@ function WorkspaceCanvas({
   onLayoutChange,
   onRemoveTile,
 }: WorkspaceCanvasProps) {
-  // useContainerWidth from RGL's modern API: ResizeObserver-backed parent
-  // measurement. mounted=false on first paint to avoid the 1280-px width
-  // flash before the observer fires. Same pattern MetersCanvas uses.
   const { width, containerRef, mounted } = useContainerWidth();
+  const theme = useThemeStore((s) => s.theme);
+  const compactType = useLayoutStore((s) => s.compactType);
+  const preventCollision = useLayoutStore((s) => s.preventCollision);
+  const customMargin = useLayoutStore((s) => s.customMargin);
+  const margin = customMargin !== -1 ? customMargin : (theme === 'classic' ? 3 : 6);
   // Subscribe to plugin-registered panels so rglLayouts recomputes once
   // plugin modules load at startup (getPanelDef inside the useMemo would
   // otherwise return undefined and never re-resolve).
@@ -162,13 +167,12 @@ function WorkspaceCanvas({
   // passed to ResponsiveGridLayout below — keep them in sync if those change.
   const rowHeight = useMemo(() => {
     if (containerHeight <= 0) return WORKSPACE_ROW_HEIGHT_PX;
-    const margin = 6;
     const containerPadding = 0;
     const inner =
       containerHeight - 2 * containerPadding - margin * (WORKSPACE_TARGET_ROWS - 1);
     const computed = Math.floor(inner / WORKSPACE_TARGET_ROWS);
     return Math.max(WORKSPACE_ROW_HEIGHT_MIN_PX, computed);
-  }, [containerHeight]);
+  }, [containerHeight, margin]);
 
   // RGL needs a stable per-render layouts.lg array. Memoise against the
   // tile list identity so we don't push a new prop on every parent render.
@@ -201,14 +205,16 @@ function WorkspaceCanvas({
         // Reserve space silently while server load + ResizeObserver settle.
         <div style={{ minHeight: 80 }} aria-hidden />
       ) : (
-        <ResponsiveGridLayout
+        <Grid
           className="all-panels-grid"
           width={width}
           breakpoints={{ lg: 0 }}
           cols={{ lg: WORKSPACE_GRID_COLS }}
           rowHeight={rowHeight}
-          margin={[6, 6]}
+          margin={[margin, margin]}
           containerPadding={[0, 0]}
+          compactType={compactType}
+          preventCollision={preventCollision}
           // Position tiles via top/left rather than transform: translate3d.
           // RGL's default `transformStrategy` uses CSS transforms, which
           // (combined with the upstream stylesheet's `will-change: transform`)
@@ -240,7 +246,7 @@ function WorkspaceCanvas({
               <PanelTile tile={tile} onRemoveTile={onRemoveTile} />
             </div>
           ))}
-        </ResponsiveGridLayout>
+        </Grid>
       )}
     </div>
   );

@@ -26,6 +26,7 @@ export interface LayoutSettingsValue {
   name: string;
   icon: string;
   description: string;
+  template?: string;
 }
 
 interface LayoutSettingsModalProps {
@@ -45,6 +46,7 @@ export function LayoutSettingsModal({
   const [name, setName] = useState(initial.name);
   const [icon, setIcon] = useState(initial.icon);
   const [description, setDescription] = useState(initial.description);
+  const [template, setTemplate] = useState('default');
   const nameRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
@@ -59,6 +61,7 @@ export function LayoutSettingsModal({
       name: trimmedName,
       icon: icon.trim(),
       description: description.trim(),
+      template: template,
     });
   };
 
@@ -183,6 +186,36 @@ export function LayoutSettingsModal({
               (macOS: ⌃⌘Space, Windows: Win + .)
             </span>
           </div>
+
+          {title === 'New layout' && (
+            <label className="layout-settings-field">
+              <span className="layout-settings-field-label">Workspace Template</span>
+              <select
+                className="layout-settings-input"
+                value={template}
+                onChange={(e) => setTemplate(e.target.value)}
+                aria-label="Workspace template"
+                style={{
+                  background: 'var(--bg-2)',
+                  color: 'var(--fg-0)',
+                  border: '1px solid var(--line)',
+                  padding: '6px 10px',
+                  borderRadius: 'var(--r-sm)',
+                  fontSize: 12,
+                  cursor: 'pointer',
+                  width: '100%',
+                }}
+              >
+                <option value="default">Default Modern (VFO stacked on Right)</option>
+                <option value="thetis">Classic Thetis (Compact dials on Top, wide Panadapter on Bottom)</option>
+                <option value="sdruno">SDRuno Compact (Vertical stack Controls on Left, Spectrum on Right)</option>
+                <option value="simple">Simple Mobile (Simplified VFO and Panadapter)</option>
+              </select>
+              <span className="layout-settings-field-hint">
+                Seed the initial panel arrangement for this workspace.
+              </span>
+            </label>
+          )}
 
           <label className="layout-settings-field">
             <span className="layout-settings-field-label">Description</span>

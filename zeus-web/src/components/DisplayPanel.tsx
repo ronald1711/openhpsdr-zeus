@@ -15,12 +15,14 @@
 
 import { BackgroundSettingsPanel } from './BackgroundSettingsPanel';
 import { ThemeSettingsPanel } from './ThemeSettingsPanel';
+import { ToolbarSettingsPanel } from './ToolbarSettingsPanel';
 import { TraceColorPanel } from './TraceColorPanel';
 
 export function DisplayPanel() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
       <ThemeSettingsPanel />
+      <ToolbarSettingsPanel />
       <BackgroundSettingsPanel />
       <TraceColorPanel />
     </div>

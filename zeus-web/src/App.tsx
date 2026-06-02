@@ -108,6 +108,8 @@ export default function App() {
   const settingsViewOpen = useLayoutStore((s) => s.settingsViewOpen);
   const settingsInitialTab = useLayoutStore((s) => s.settingsInitialTab);
   const setSettingsView = useLayoutStore((s) => s.setSettingsView);
+  const showTopbar = useLayoutStore((s) => s.showTopbar);
+  const visibleToolbarControls = useLayoutStore((s) => s.visibleToolbarControls);
   const [updateAvailable, setUpdateAvailable] = useState(false);
   const [installUpdate, setInstallUpdate] = useState<(() => Promise<void>) | null>(null);
   const status = useConnectionStore((s) => s.status);
@@ -665,7 +667,14 @@ export default function App() {
     <WorkspaceContext.Provider value={workspaceCtx}>
     <SpectrumWheelActionsContext.Provider value={spectrumWheelActions}>
     <ThemeApplier />
-    <div className="app" data-screen-label="01 Main Console" style={{ position: 'relative' }}>
+    <div
+      className="app"
+      data-screen-label="01 Main Console"
+      style={{
+        position: 'relative',
+        gridTemplateRows: showTopbar ? '60px 1fr 38px' : '0px 1fr 38px',
+      }}
+    >
       {/* Left layout bar — issue #241. Spans the full app height; lists named
           layouts for the active radio with switch/add/delete/reset actions. */}
       <LeftLayoutBar />
@@ -677,57 +686,67 @@ export default function App() {
           through the workspace (see feedback memory: top bar keeps inline
           controls). The bar sits above the disconnected overlay so QRZ
           sign-in stays usable before a radio is connected. */}
-      <header className="topbar" style={{ position: 'relative', zIndex: 300 }}>
-        <div className="brand">
-          <div className="brand-mark">
-            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden>
-              <circle cx="12" cy="12" r="3" fill="var(--accent)" />
-              <circle cx="12" cy="12" r="7" fill="none" stroke="var(--accent)" strokeWidth="1" opacity="0.5" />
-              <circle cx="12" cy="12" r="11" fill="none" stroke="var(--accent)" strokeWidth="1" opacity="0.25" />
-            </svg>
-          </div>
-          <div className="brand-text">
-            <div className="brand-name mono">OpenHpsdr Zeus</div>
-            <div className="brand-sub label-xs hide-mobile">{brandSub}</div>
-          </div>
-        </div>
-
-        <span className="topbar-divider hide-mobile" aria-hidden />
-
-        <div className="topbar-controls hide-mobile">
-          <ModeFavorites />
-          <span className="strip-divider" aria-hidden />
-          <FilterPanel />
-          <span className="strip-divider" aria-hidden />
-          <BandFavorites />
-          <span className="strip-divider" aria-hidden />
-          <StepFavorites />
-          <span className="strip-divider" aria-hidden />
-          <div className="ctrl-group" style={{ minWidth: 200 }}>
-            <div className="label-xs ctrl-lbl">FRONT-END</div>
-            <div className="btn-row" style={{ gap: 6, alignItems: 'center' }}>
-              <PreampButton />
-              <AttenuatorSlider />
+      {showTopbar && (
+        <header className="topbar" style={{ position: 'relative', zIndex: 300 }}>
+          <div className="brand">
+            <div className="brand-mark">
+              <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden>
+                <circle cx="12" cy="12" r="3" fill="var(--accent)" />
+                <circle cx="12" cy="12" r="7" fill="none" stroke="var(--accent)" strokeWidth="1" opacity="0.5" />
+                <circle cx="12" cy="12" r="11" fill="none" stroke="var(--accent)" strokeWidth="1" opacity="0.25" />
+              </svg>
+            </div>
+            <div className="brand-text">
+              <div className="brand-name mono">OpenHpsdr Zeus</div>
+              <div className="brand-sub label-xs hide-mobile">{brandSub}</div>
             </div>
           </div>
-          <div className="ctrl-group" style={{ minWidth: 160 }}>
-            <div className="label-xs ctrl-lbl">AGC</div>
-            <AgcSlider />
-          </div>
-          <div className="ctrl-group" style={{ minWidth: 160 }}>
-            <div className="label-xs ctrl-lbl">AF</div>
-            <AfGainSlider />
-          </div>
-        </div>
 
-        <div className="spacer" style={{ flex: 1 }} />
+          <span className="topbar-divider hide-mobile" aria-hidden />
 
-        {/* Settings is reached from the LeftLayoutBar (bottom slot). The
-            top bar is now reserved for Disconnect when connected; while
-            disconnected the centre overlay owns Discover so we mount only
-            one ConnectPanel at a time. */}
-        {connected && <ConnectPanel compact />}
-      </header>
+          <div className="topbar-controls hide-mobile">
+            {visibleToolbarControls.includes('mode') && <ModeFavorites />}
+            {visibleToolbarControls.includes('mode') && visibleToolbarControls.includes('filter') && <span className="strip-divider" aria-hidden />}
+            {visibleToolbarControls.includes('filter') && <FilterPanel />}
+            {visibleToolbarControls.includes('filter') && visibleToolbarControls.includes('band') && <span className="strip-divider" aria-hidden />}
+            {visibleToolbarControls.includes('band') && <BandFavorites />}
+            {visibleToolbarControls.includes('band') && visibleToolbarControls.includes('step') && <span className="strip-divider" aria-hidden />}
+            {visibleToolbarControls.includes('step') && <StepFavorites />}
+            {visibleToolbarControls.includes('step') && visibleToolbarControls.includes('frontend') && <span className="strip-divider" aria-hidden />}
+            {visibleToolbarControls.includes('frontend') && (
+              <div className="ctrl-group" style={{ minWidth: 200 }}>
+                <div className="label-xs ctrl-lbl">FRONT-END</div>
+                <div className="btn-row" style={{ gap: 6, alignItems: 'center' }}>
+                  <PreampButton />
+                  <AttenuatorSlider />
+                </div>
+              </div>
+            )}
+            {visibleToolbarControls.includes('frontend') && visibleToolbarControls.includes('agc') && <span className="strip-divider" aria-hidden />}
+            {visibleToolbarControls.includes('agc') && (
+              <div className="ctrl-group" style={{ minWidth: 160 }}>
+                <div className="label-xs ctrl-lbl">AGC</div>
+                <AgcSlider />
+              </div>
+            )}
+            {visibleToolbarControls.includes('agc') && visibleToolbarControls.includes('af') && <span className="strip-divider" aria-hidden />}
+            {visibleToolbarControls.includes('af') && (
+              <div className="ctrl-group" style={{ minWidth: 160 }}>
+                <div className="label-xs ctrl-lbl">AF</div>
+                <AfGainSlider />
+              </div>
+            )}
+          </div>
+
+          <div className="spacer" style={{ flex: 1 }} />
+
+          {/* Settings is reached from the LeftLayoutBar (bottom slot). The
+              top bar is now reserved for Disconnect when connected; while
+              disconnected the centre overlay owns Discover so we mount only
+              one ConnectPanel at a time. */}
+          {connected && <ConnectPanel compact />}
+        </header>
+      )}
 
       {/* Workspace area — alert banner + active layout (or settings view).
           Wrapped together so the grid only needs one row for both, which

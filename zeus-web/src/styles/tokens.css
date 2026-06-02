@@ -4,7 +4,7 @@
    halos on meters, blue aurora on the VFO. Source of truth.
    =========================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap');
 
 @font-face { font-display: swap; }
 
@@ -333,6 +333,106 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
      dark-theme white rim vanishes here — see comment in :root). */
   --immersive-arc-track-rim:    rgba(40, 45, 52, 0.18);
   --immersive-arc-track-shadow: rgba(40, 45, 52, 0.42);
+}
+
+/* ===========================================================
+   CLASSIC RETRO THEME — deep brushed-metal steel chassis, glowing green LEDs
+   =========================================================== */
+:root[data-theme="classic"] {
+  /* Chassis backdrop — dark brushed steel / gunmetal */
+  --bg-app:       #0d0f13;
+  --bg-workspace: #0d0f13;
+  --bg-0:         #0d0f13;
+  --bg-1:         #13171d;  /* panel base */
+  --bg-2:         #1b2029;  /* raised control / button */
+  --bg-3:         #232a35;  /* hover */
+  --bg-inset:     #040507;
+  --bg-meter:     #020304;
+
+  /* Lines — steel grays */
+  --line:         #1f2530;
+  --line-soft:    #171b24;
+  --line-strong:  #2d3545;
+
+  /* Panel head — retro brushed-metal gradient with clear borders */
+  --panel-head-top: #1a1e27;
+  --panel-head-bot: #13171d;
+  --panel-border:   #1f2530;
+  --panel-hl-top:   rgba(255,255,255,0.06);
+  --panel-top:      #1a1e27;
+  --panel-bot:      #13171d;
+  --panel-edge:     #1f2530;
+  --panel-shadow:   0 1px 0 rgba(255,255,255,0.06) inset, 0 1px 3px rgba(0,0,0,0.3);
+
+  /* Buttons on classic — tactile, steel edge with inner highlight */
+  --btn-top:        #1d222b;
+  --btn-bot:        #151920;
+  --btn-hl:         rgba(255,255,255,0.04);
+  --btn-edge:       #2a313d;
+  --btn-text:       #c5cad3;
+  
+  --btn-active-top: #169c46; /* glowing green */
+  --btn-active-bot: #0f6c2f;
+  --btn-active-text:#ffffff;
+
+  /* Text on classic chassis — crisp high contrast */
+  --fg-0:         #ffffff;
+  --fg-1:         #d4d8df;
+  --fg-2:         #9ca3af;
+  --fg-3:         #6b7280;
+  --fg-4:         #3c414a;
+
+  /* Accents — bright vintage green / amber */
+  --accent:        #169c46; /* glowing green */
+  --accent-bright: #3adf00;
+  --accent-soft:   rgba(58,223,0,0.1);
+  --accent-line:   rgba(58,223,0,0.4);
+  
+  --tx:            #ef4444; /* red */
+  --tx-soft:       rgba(239,68,68,0.18);
+  --power:         #f59e0b; /* amber/yellow */
+  --power-soft:    rgba(245,158,11,0.16);
+  --ok:            #22c55e;
+  --ok-soft:       rgba(34,197,94,0.18);
+  --amber:         #f59e0b;
+  --amber-soft:    rgba(245,158,11,0.18);
+  --orange:        #f97316;
+
+  /* Special VFO readouts style variables */
+  --vfo-led-color: #3adf00; /* Glowing retro green */
+  --vfo-led-glow:  rgba(58, 223, 0, 0.55);
+  --vfo-led-dim:   rgba(58, 223, 0, 0.12);
+
+  /* Fonts — high-density retro displays */
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Denser borders and corners for that vintage instrument feel */
+  --r-xs: 1px;
+  --r-sm: 2px;
+  --r-md: 3px;
+  --r-lg: 4px;
+
+  /* Grid layout overrides for tight spacing */
+  --grid-gap:     3px;
+}
+
+/* Specific styling for the digital displays under Classic Retro */
+:root[data-theme="classic"] .freq-digits {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  color: var(--vfo-led-color) !important;
+  text-shadow: 0 0 10px var(--vfo-led-glow), 0 0 20px rgba(58, 223, 0, 0.15) !important;
+  letter-spacing: 0.05em !important;
+}
+
+:root[data-theme="classic"] .freq-digits .digit.leading {
+  color: var(--vfo-led-dim) !important;
+}
+
+:root[data-theme="classic"] .freq-digits .sep {
+  color: var(--vfo-led-dim) !important;
+  font-weight: 700 !important;
 }
 
 /* ===========================================================
