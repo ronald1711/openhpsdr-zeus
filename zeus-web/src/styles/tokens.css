@@ -526,7 +526,7 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
 
 /* Waterfall custom ramp for Matrix: dark green → electric neon green */
 :root[data-theme="matrix"] {
-  --spec-bg:     #010301;
+  --spec-bg:     url('/themes/matrix/picDisplay.png') no-repeat center / cover #010301;
   --spec-grid:   rgba(0,255,65,0.06);
   --spec-line:   #39ff14;
   --spec-fill:   rgba(0,255,65,0.12);
@@ -638,6 +638,7 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
 
 /* StarTrek Special Meter system gradient */
 :root[data-theme="startrek"] {
+  --spec-bg:     url('/themes/startrek/picDisplay.png') no-repeat center / cover #020204;
   --meter-fill:  linear-gradient(90deg, #996699 0%, #cc99cc 70%, #ff9900 90%, #ffcc00 100%);
   --spec-fill:   rgba(204,153,204,0.12);
   --spec-line:   #ff9900;
@@ -662,6 +663,7 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-3:         #1d284a;
   --bg-inset:     #020408;
   --bg-meter:     #010204;
+  --spec-bg:      url('/themes/theblue/picDisplay.png') no-repeat center / cover #020408;
 
   --line:         #1c2847;
   --line-soft:    #11192e;
@@ -725,6 +727,7 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-3:         #382c25;
   --bg-inset:     #080605;
   --bg-meter:     #040302;
+  --spec-bg:      url('/themes/steampunk/picDisplay.png') no-repeat center / cover #080605;
 
   --line:         #362a22;
   --line-soft:    #241b16;
@@ -788,6 +791,7 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-3:         #1a2034;
   --bg-inset:     #000000;
   --bg-meter:     #010102;
+  --spec-bg:      url('/themes/blackglass/picDisplay.png') no-repeat center / cover #000000;
 
   --line:         #161d2d;
   --line-soft:    #0a0e16;
@@ -851,6 +855,7 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-3:         #3d5144;
   --bg-inset:     #090c0a;
   --bg-meter:     #050605;
+  --spec-bg:      url('/themes/seamoss/picDisplay.png') no-repeat center / cover #090c0a;
 
   --line:         #3b4c41;
   --line-soft:    #26322b;
@@ -914,6 +919,7 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-3:         #242424;
   --bg-inset:     #020202;
   --bg-meter:     #000000;
+  --spec-bg:      url('/themes/darkmetal/picDisplay.png') no-repeat center / cover #020202;
 
   --line:         #222222;
   --line-soft:    #151515;
@@ -977,6 +983,7 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-3:         #4a535c;
   --bg-inset:     #08090a;
   --bg-meter:     #030404;
+  --spec-bg:      url('/themes/openhpsdrgray/picDisplay.png') no-repeat center / cover #08090a;
 
   --line:         #454d56;
   --line-soft:    #2d3238;
@@ -1040,6 +1047,7 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-3:         #35322e;
   --bg-inset:     #060505;
   --bg-meter:     #030202;
+  --spec-bg:      url('/themes/yaesu/picDisplay.png') no-repeat center / cover #060505;
 
   --line:         #b89230;  /* Gold trim line */
   --line-soft:    #1c1a18;
