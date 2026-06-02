@@ -436,6 +436,221 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
 }
 
 /* ===========================================================
+   MATRIX THEME — retro phosphor terminal hacker green and pitch black
+   =========================================================== */
+:root[data-theme="matrix"] {
+  /* Chassis backdrop — deepest terminal black */
+  --bg-app:       #020202;
+  --bg-workspace: #020202;
+  --bg-0:         #020202;
+  --bg-1:         #050805;  /* panel base */
+  --bg-2:         #0c140c;  /* raised control / button */
+  --bg-3:         #122012;  /* hover */
+  --bg-inset:     #010201;
+  --bg-meter:     #000000;
+
+  /* Lines — glowing matrix green borders */
+  --line:         #0c250c;
+  --line-soft:    #061506;
+  --line-strong:  #164016;
+
+  /* Panel head */
+  --panel-head-top: #081208;
+  --panel-head-bot: #050805;
+  --panel-border:   #0c250c;
+  --panel-hl-top:   transparent;
+  --panel-top:      #081208;
+  --panel-bot:      #050805;
+  --panel-edge:     #0c250c;
+  --panel-shadow:   0 0 10px rgba(0,255,65,0.06);
+
+  /* Buttons on matrix */
+  --btn-top:        #081208;
+  --btn-bot:        #050805;
+  --btn-hl:         transparent;
+  --btn-edge:       #0d300d;
+  --btn-text:       #00cc41;
+  
+  --btn-active-top: #00ff41; 
+  --btn-active-bot: #008822;
+  --btn-active-text:#000000;
+
+  /* Text — matrix phosphor green */
+  --fg-0:         #00ff41;
+  --fg-1:         #00cc33;
+  --fg-2:         #008822;
+  --fg-3:         #005511;
+  --fg-4:         #003300;
+
+  /* Accents — bright neon green terminal phosphors */
+  --accent:        #00ff41;
+  --accent-bright: #39ff14;
+  --accent-soft:   rgba(0,255,65,0.08);
+  --accent-line:   rgba(0,255,65,0.35);
+  
+  --tx:            #ef4444; 
+  --tx-soft:       rgba(239,68,68,0.18);
+  --power:         #00ff41;
+  --power-soft:    rgba(0,255,65,0.1);
+  --ok:            #00ff41;
+  --ok-soft:       rgba(0,255,65,0.12);
+  --amber:         #00cc33;
+  --amber-soft:    rgba(0,204,51,0.12);
+  --orange:        #00ff41;
+
+  /* Special VFO style variables */
+  --vfo-led-color: #00ff41;
+  --vfo-led-glow:  rgba(0, 255, 65, 0.65);
+  --vfo-led-dim:   rgba(0, 255, 65, 0.12);
+
+  --font-sans:    'JetBrains Mono', monospace;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+
+/* Specific styling for the digital displays under Matrix */
+:root[data-theme="matrix"] .freq-digits {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  color: var(--vfo-led-color) !important;
+  text-shadow: 0 0 10px var(--vfo-led-glow), 0 0 20px rgba(0, 255, 65, 0.15) !important;
+  letter-spacing: 0.05em !important;
+}
+:root[data-theme="matrix"] .freq-digits .digit.leading {
+  color: var(--vfo-led-dim) !important;
+}
+:root[data-theme="matrix"] .freq-digits .sep {
+  color: var(--vfo-led-dim) !important;
+  font-weight: 700 !important;
+}
+
+/* Waterfall custom ramp for Matrix: dark green → electric neon green */
+:root[data-theme="matrix"] {
+  --spec-bg:     #010301;
+  --spec-grid:   rgba(0,255,65,0.06);
+  --spec-line:   #39ff14;
+  --spec-fill:   rgba(0,255,65,0.12);
+  --wf-0: #000000;
+  --wf-1: #001100;
+  --wf-2: #003300;
+  --wf-3: #006611;
+  --wf-4: #00aa22;
+  --wf-5: #00dd33;
+  --wf-6: #39ff14;
+
+  --meter-fill:  linear-gradient(90deg, #008822 0%, #00cc33 70%, #00ff41 90%, #39ff14 100%);
+}
+
+/* ===========================================================
+   STARTREK LCARS THEME — futuristic sci-fi terminal styling
+   =========================================================== */
+:root[data-theme="startrek"] {
+  /* Chassis backdrop — deep space navy black */
+  --bg-app:       #06050b;
+  --bg-workspace: #06050b;
+  --bg-0:         #06050b;
+  --bg-1:         #0f0d1a;  /* panel base */
+  --bg-2:         #171428;  /* raised control / button */
+  --bg-3:         #231e3d;  /* hover */
+  --bg-inset:     #020204;
+  --bg-meter:     #030305;
+
+  /* Lines — futuristic violet borders */
+  --line:         #251d38;
+  --line-soft:    #161122;
+  --line-strong:  #3b2f59;
+
+  /* Panel head — sleek dark LCARS frame */
+  --panel-head-top: #1b162f;
+  --panel-head-bot: #0f0d1a;
+  --panel-border:   #251d38;
+  --panel-hl-top:   transparent;
+  --panel-top:      #1b162f;
+  --panel-bot:      #0f0d1a;
+  --panel-edge:     #251d38;
+  --panel-shadow:   none;
+
+  /* Tactile rounded LCARS buttons */
+  --btn-top:        #231e3d;
+  --btn-bot:        #171428;
+  --btn-hl:         transparent;
+  --btn-edge:       #3b2f59;
+  --btn-text:       #ffaa00; /* gold-yellow */
+  
+  --btn-active-top: #ff9900; /* LCARS orange */
+  --btn-active-bot: #cc5500;
+  --btn-active-text:#000000;
+
+  /* Text — LCARS gold and violet ramp */
+  --fg-0:         #ffcc00; /* LCARS gold */
+  --fg-1:         #ff9900; /* LCARS orange */
+  --fg-2:         #cc99cc; /* LCARS purple */
+  --fg-3:         #996699; /* LCARS dark purple */
+  --fg-4:         #4a3b68;
+
+  /* Accents — gold/orange/purple palette */
+  --accent:        #ff9900; /* orange */
+  --accent-bright: #ffcc00; /* gold */
+  --accent-soft:   rgba(255,153,0,0.1);
+  --accent-line:   rgba(255,153,0,0.4);
+  
+  --tx:            #cc6699; /* magenta */
+  --tx-soft:       rgba(204,102,153,0.18);
+  --power:         #ff9900;
+  --power-soft:    rgba(255,153,0,0.12);
+  --ok:            #cc99cc; /* violet */
+  --ok-soft:       rgba(204,153,204,0.18);
+  --amber:         #ffcc00;
+  --amber-soft:    rgba(255,204,0,0.18);
+  --orange:        #ff8a3c;
+
+  /* Special VFO style variables */
+  --vfo-led-color: #ff9900; /* Glowing LCARS VFO */
+  --vfo-led-glow:  rgba(255, 153, 0, 0.55);
+  --vfo-led-dim:   rgba(255, 153, 0, 0.12);
+
+  --font-sans:    'Inter', sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Futuristic pill shape borders and corners */
+  --r-xs: 6px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+}
+
+/* Specific styling for the digital displays under StarTrek */
+:root[data-theme="startrek"] .freq-digits {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  color: var(--vfo-led-color) !important;
+  text-shadow: 0 0 10px var(--vfo-led-glow), 0 0 20px rgba(255, 153, 0, 0.15) !important;
+  letter-spacing: 0.05em !important;
+}
+:root[data-theme="startrek"] .freq-digits .digit.leading {
+  color: var(--vfo-led-dim) !important;
+}
+:root[data-theme="startrek"] .freq-digits .sep {
+  color: var(--vfo-led-dim) !important;
+  font-weight: 700 !important;
+}
+
+/* StarTrek Special Meter system gradient */
+:root[data-theme="startrek"] {
+  --meter-fill:  linear-gradient(90deg, #996699 0%, #cc99cc 70%, #ff9900 90%, #ffcc00 100%);
+  --spec-fill:   rgba(204,153,204,0.12);
+  --spec-line:   #ff9900;
+  --wf-0: #020204;
+  --wf-1: #100a1c;
+  --wf-2: #22123a;
+  --wf-3: #441a5a;
+  --wf-4: #772b7a;
+  --wf-5: #cc55aa;
+  --wf-6: #ffaa33;
+}
+
+/* ===========================================================
    Base resets
    =========================================================== */
 * { box-sizing: border-box; }

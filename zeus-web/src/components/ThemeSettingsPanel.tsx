@@ -162,6 +162,18 @@ const THEME_OPTIONS: ReadonlyArray<{
     blurb: 'Brushed-silver chassis with dark display wells. Day-shack mode.',
     swatch: '#c4c8ce',
   },
+  {
+    id: 'matrix',
+    label: 'Matrix Green',
+    blurb: 'Retro-hacker green phosphor on a pitch black backdrop. The Matrix awaits.',
+    swatch: '#00ff41',
+  },
+  {
+    id: 'startrek',
+    label: 'StarTrek LCARS',
+    blurb: 'Futuristic sci-fi console layout featuring warm yellow, orange, and purple accent panels.',
+    swatch: '#ff9900',
+  },
 ];
 
 function isHexColor(v: string): boolean {
@@ -376,7 +388,7 @@ const sectionWarn: CSSProperties = {
 
 const themeGrid: CSSProperties = {
   display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
   gap: 10,
 };
 

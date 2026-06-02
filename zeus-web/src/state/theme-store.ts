@@ -25,7 +25,7 @@ import { fetchThemeSettings, updateThemeSettings } from '../api/themeSettings';
 //     debounced PUT so a single setting follows the operator from desktop
 //     to tablet without a per-browser reset.
 
-export type ThemeId = 'dark' | 'light' | 'classic';
+export type ThemeId = 'dark' | 'light' | 'classic' | 'matrix' | 'startrek';
 
 // Tokens we expose in the operator-facing colour-tweak UI. Two groups:
 //   - ACCENT tokens — the "feel" tokens an operator notices: accent for
@@ -104,7 +104,7 @@ const THEME_KEY = 'zeus.theme';
 const OVERRIDES_KEY = 'zeus.theme.overrides';
 
 function isThemeId(v: unknown): v is ThemeId {
-  return v === 'dark' || v === 'light' || v === 'classic';
+  return v === 'dark' || v === 'light' || v === 'classic' || v === 'matrix' || v === 'startrek';
 }
 
 function isHexColor(v: unknown): v is string {
