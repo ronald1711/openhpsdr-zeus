@@ -9,6 +9,13 @@
 @font-face { font-display: swap; }
 
 :root {
+  /* ----- Tactile assets variables ----- */
+  --btn-inactive-img: none;
+  --btn-active-img: none;
+  --btn-active-tx-img: none;
+  --slider-track-img: none;
+  --slider-thumb-img: none;
+
   /* ----- Workspace ----- */
   --bg-app:       #0a0a0c;  /* app backdrop — header / sidebar / footer chrome */
   /* Workspace canvas reverts to near-black so the whole layout reads as one
@@ -539,6 +546,11 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --wf-6: #39ff14;
 
   --meter-fill:  linear-gradient(90deg, #008822 0%, #00cc33 70%, #00ff41 90%, #39ff14 100%);
+  --btn-inactive-img: url('/themes/matrix/btn-inactive.png');
+  --btn-active-img: url('/themes/matrix/btn-active.png');
+  --btn-active-tx-img: url('/themes/matrix/btn-active-tx.png');
+  --slider-track-img: url('/themes/matrix/slider-track.png');
+  --slider-thumb-img: url('/themes/matrix/slider-thumb.png');
 }
 
 /* ===========================================================
@@ -641,6 +653,11 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --spec-bg:     url('/themes/startrek/picDisplay.png') no-repeat center / cover #020204;
   --meter-fill:  linear-gradient(90deg, #996699 0%, #cc99cc 70%, #ff9900 90%, #ffcc00 100%);
   --spec-fill:   rgba(204,153,204,0.12);
+  --btn-inactive-img: url('/themes/startrek/btn-inactive.png');
+  --btn-active-img: url('/themes/startrek/btn-active.png');
+  --btn-active-tx-img: url('/themes/startrek/btn-active-tx.png');
+  --slider-track-img: url('/themes/startrek/slider-track.png');
+  --slider-thumb-img: url('/themes/startrek/slider-thumb.png');
   --spec-line:   #ff9900;
   --wf-0: #020204;
   --wf-1: #100a1c;
@@ -664,6 +681,11 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-inset:     #020408;
   --bg-meter:     #010204;
   --spec-bg:      url('/themes/theblue/picDisplay.png') no-repeat center / cover #020408;
+  --btn-inactive-img: url('/themes/theblue/btn-inactive.png');
+  --btn-active-img: url('/themes/theblue/btn-active.png');
+  --btn-active-tx-img: url('/themes/theblue/btn-active-tx.png');
+  --slider-track-img: url('/themes/theblue/slider-track.png');
+  --slider-thumb-img: url('/themes/theblue/slider-thumb.png');
 
   --line:         #1c2847;
   --line-soft:    #11192e;
@@ -728,6 +750,11 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-inset:     #080605;
   --bg-meter:     #040302;
   --spec-bg:      url('/themes/steampunk/picDisplay.png') no-repeat center / cover #080605;
+  --btn-inactive-img: url('/themes/steampunk/btn-inactive.png');
+  --btn-active-img: url('/themes/steampunk/btn-active.png');
+  --btn-active-tx-img: url('/themes/steampunk/btn-active-tx.png');
+  --slider-track-img: url('/themes/steampunk/slider-track.png');
+  --slider-thumb-img: url('/themes/steampunk/slider-thumb.png');
 
   --line:         #362a22;
   --line-soft:    #241b16;
@@ -792,6 +819,11 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-inset:     #000000;
   --bg-meter:     #010102;
   --spec-bg:      url('/themes/blackglass/picDisplay.png') no-repeat center / cover #000000;
+  --btn-inactive-img: url('/themes/blackglass/btn-inactive.png');
+  --btn-active-img: url('/themes/blackglass/btn-active.png');
+  --btn-active-tx-img: url('/themes/blackglass/btn-active-tx.png');
+  --slider-track-img: url('/themes/blackglass/slider-track.png');
+  --slider-thumb-img: url('/themes/blackglass/slider-thumb.png');
 
   --line:         #161d2d;
   --line-soft:    #0a0e16;
@@ -856,6 +888,11 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-inset:     #090c0a;
   --bg-meter:     #050605;
   --spec-bg:      url('/themes/seamoss/picDisplay.png') no-repeat center / cover #090c0a;
+  --btn-inactive-img: url('/themes/seamoss/btn-inactive.png');
+  --btn-active-img: url('/themes/seamoss/btn-active.png');
+  --btn-active-tx-img: url('/themes/seamoss/btn-active-tx.png');
+  --slider-track-img: url('/themes/seamoss/slider-track.png');
+  --slider-thumb-img: url('/themes/seamoss/slider-thumb.png');
 
   --line:         #3b4c41;
   --line-soft:    #26322b;
@@ -920,6 +957,11 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-inset:     #020202;
   --bg-meter:     #000000;
   --spec-bg:      url('/themes/darkmetal/picDisplay.png') no-repeat center / cover #020202;
+  --btn-inactive-img: url('/themes/darkmetal/btn-inactive.png');
+  --btn-active-img: url('/themes/darkmetal/btn-active.png');
+  --btn-active-tx-img: url('/themes/darkmetal/btn-active-tx.png');
+  --slider-track-img: url('/themes/darkmetal/slider-track.png');
+  --slider-thumb-img: url('/themes/darkmetal/slider-thumb.png');
 
   --line:         #222222;
   --line-soft:    #151515;
@@ -984,6 +1026,11 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-inset:     #08090a;
   --bg-meter:     #030404;
   --spec-bg:      url('/themes/openhpsdrgray/picDisplay.png') no-repeat center / cover #08090a;
+  --btn-inactive-img: url('/themes/openhpsdrgray/btn-inactive.png');
+  --btn-active-img: url('/themes/openhpsdrgray/btn-active.png');
+  --btn-active-tx-img: url('/themes/openhpsdrgray/btn-active-tx.png');
+  --slider-track-img: url('/themes/openhpsdrgray/slider-track.png');
+  --slider-thumb-img: url('/themes/openhpsdrgray/slider-thumb.png');
 
   --line:         #454d56;
   --line-soft:    #2d3238;
@@ -1048,6 +1095,11 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   --bg-inset:     #060505;
   --bg-meter:     #030202;
   --spec-bg:      url('/themes/yaesu/picDisplay.png') no-repeat center / cover #060505;
+  --btn-inactive-img: url('/themes/yaesu/btn-inactive.png');
+  --btn-active-img: url('/themes/yaesu/btn-active.png');
+  --btn-active-tx-img: url('/themes/yaesu/btn-active-tx.png');
+  --slider-track-img: url('/themes/yaesu/slider-track.png');
+  --slider-thumb-img: url('/themes/yaesu/slider-thumb.png');
 
   --line:         #b89230;  /* Gold trim line */
   --line-soft:    #1c1a18;
@@ -1216,4 +1268,144 @@ input[type="range"]::-moz-range-thumb {
   border: 0;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.5);
   cursor: pointer;
+}
+
+/* ===========================================================
+   TACTILE SKINS — BUTTON & SLIDER GRAPHICS OVERRIDES
+   =========================================================== */
+
+/* Tactile button overrides for the 9 custom converted themes */
+:root[data-theme="theblue"] .btn,
+:root[data-theme="steampunk"] .btn,
+:root[data-theme="blackglass"] .btn,
+:root[data-theme="seamoss"] .btn,
+:root[data-theme="darkmetal"] .btn,
+:root[data-theme="openhpsdrgray"] .btn,
+:root[data-theme="yaesu"] .btn,
+:root[data-theme="matrix"] .btn,
+:root[data-theme="startrek"] .btn {
+  background-image: var(--btn-inactive-img) !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.7) !important;
+  transition: filter var(--dur-fast) ease-in-out !important;
+}
+
+:root[data-theme="theblue"] .btn:hover,
+:root[data-theme="steampunk"] .btn:hover,
+:root[data-theme="blackglass"] .btn:hover,
+:root[data-theme="seamoss"] .btn:hover,
+:root[data-theme="darkmetal"] .btn:hover,
+:root[data-theme="openhpsdrgray"] .btn:hover,
+:root[data-theme="yaesu"] .btn:hover,
+:root[data-theme="matrix"] .btn:hover,
+:root[data-theme="startrek"] .btn:hover {
+  filter: brightness(1.2) !important;
+}
+
+:root[data-theme="theblue"] .btn.active,
+:root[data-theme="steampunk"] .btn.active,
+:root[data-theme="blackglass"] .btn.active,
+:root[data-theme="seamoss"] .btn.active,
+:root[data-theme="darkmetal"] .btn.active,
+:root[data-theme="openhpsdrgray"] .btn.active,
+:root[data-theme="yaesu"] .btn.active,
+:root[data-theme="matrix"] .btn.active,
+:root[data-theme="startrek"] .btn.active {
+  background-image: var(--btn-active-img) !important;
+  box-shadow: 0 0 8px var(--accent-line) !important;
+}
+
+:root[data-theme="theblue"] .btn.tx.active,
+:root[data-theme="theblue"] .btn.tx-btn.tx,
+:root[data-theme="steampunk"] .btn.tx.active,
+:root[data-theme="steampunk"] .btn.tx-btn.tx,
+:root[data-theme="blackglass"] .btn.tx.active,
+:root[data-theme="blackglass"] .btn.tx-btn.tx,
+:root[data-theme="seamoss"] .btn.tx.active,
+:root[data-theme="seamoss"] .btn.tx-btn.tx,
+:root[data-theme="darkmetal"] .btn.tx.active,
+:root[data-theme="darkmetal"] .btn.tx-btn.tx,
+:root[data-theme="openhpsdrgray"] .btn.tx.active,
+:root[data-theme="openhpsdrgray"] .btn.tx-btn.tx,
+:root[data-theme="yaesu"] .btn.tx.active,
+:root[data-theme="yaesu"] .btn.tx-btn.tx,
+:root[data-theme="matrix"] .btn.tx.active,
+:root[data-theme="matrix"] .btn.tx-btn.tx,
+:root[data-theme="startrek"] .btn.tx.active,
+:root[data-theme="startrek"] .btn.tx-btn.tx {
+  background-image: var(--btn-active-tx-img) !important;
+  box-shadow: 0 0 10px rgba(255, 74, 89, 0.4) !important;
+}
+
+/* Tactile Range Sliders for the 9 custom converted themes */
+:root[data-theme="theblue"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="steampunk"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="blackglass"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="seamoss"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="darkmetal"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="openhpsdrgray"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="yaesu"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="matrix"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="startrek"] input[type="range"]::-webkit-slider-runnable-track {
+  background: var(--slider-track-img) repeat-x center !important;
+  background-size: auto 100% !important;
+  height: 10px !important;
+  border: 1px solid var(--line-strong) !important;
+  border-radius: 2px !important;
+}
+
+:root[data-theme="theblue"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="steampunk"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="blackglass"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="seamoss"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="darkmetal"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="openhpsdrgray"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="yaesu"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="matrix"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="startrek"] input[type="range"]::-webkit-slider-thumb {
+  background: var(--slider-thumb-img) no-repeat center !important;
+  background-size: contain !important;
+  width: 12px !important;
+  height: 20px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin-top: -5px !important;
+}
+
+:root[data-theme="theblue"] input[type="range"]::-moz-range-track,
+:root[data-theme="steampunk"] input[type="range"]::-moz-range-track,
+:root[data-theme="blackglass"] input[type="range"]::-moz-range-track,
+:root[data-theme="seamoss"] input[type="range"]::-moz-range-track,
+:root[data-theme="darkmetal"] input[type="range"]::-moz-range-track,
+:root[data-theme="openhpsdrgray"] input[type="range"]::-moz-range-track,
+:root[data-theme="yaesu"] input[type="range"]::-moz-range-track,
+:root[data-theme="matrix"] input[type="range"]::-moz-range-track,
+:root[data-theme="startrek"] input[type="range"]::-moz-range-track {
+  background: var(--slider-track-img) repeat-x center !important;
+  background-size: auto 100% !important;
+  height: 10px !important;
+  border: 1px solid var(--line-strong) !important;
+  border-radius: 2px !important;
+}
+
+:root[data-theme="theblue"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="steampunk"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="blackglass"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="seamoss"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="darkmetal"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="openhpsdrgray"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="yaesu"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="matrix"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="startrek"] input[type="range"]::-moz-range-thumb {
+  background: var(--slider-thumb-img) no-repeat center !important;
+  background-size: contain !important;
+  width: 12px !important;
+  height: 20px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
