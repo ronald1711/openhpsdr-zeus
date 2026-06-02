@@ -51,6 +51,7 @@ import { LeafletWorldMap } from '../../components/design/LeafletWorldMap';
 import { LeafletMapErrorBoundary } from '../../components/design/LeafletMapErrorBoundary';
 import { useConnectionStore } from '../../state/connection-store';
 import { useRotatorStore } from '../../state/rotator-store';
+import { useTxStore } from '../../state/tx-store';
 import { useWorkspace } from '../WorkspaceContext';
 
 // Hero panel: Panadapter + Waterfall with optional Leaflet world-map overlay.
@@ -67,8 +68,6 @@ export function HeroPanel({ onRemove }: { onRemove?: () => void } = {}) {
     bgActive,
     backgroundImage,
     backgroundImageFit,
-    moxOn,
-    tunOn,
     contact,
     mapAvailable,
     setMapAvailable,
@@ -85,6 +84,8 @@ export function HeroPanel({ onRemove }: { onRemove?: () => void } = {}) {
     submitBeam,
   } = useWorkspace();
   const connected = useConnectionStore((s) => s.status === 'Connected');
+  const moxOn = useTxStore((s) => s.moxOn);
+  const tunOn = useTxStore((s) => s.tunOn);
 
   const handleRotateToBearing = (brg: number) => {
     const rot = useRotatorStore.getState();

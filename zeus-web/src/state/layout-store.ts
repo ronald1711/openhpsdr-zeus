@@ -134,6 +134,10 @@ interface LayoutState {
   ) => void;
   /** Replace a tile's instanceConfig blob. */
   updateTileInstanceConfig: (uid: string, instanceConfig: unknown) => void;
+  /** Toggle a tile's lock/unlock status (drag/resize capability). */
+  toggleTileLock: (uid: string) => void;
+  /** Toggle a tile's headerHidden auto-hide status. */
+  toggleTileHeaderHidden: (uid: string) => void;
 
   // Back-compat surface (still used by SettingsMenu before #241 lands the
   // LeftLayoutBar). resetLayout calls resetActiveLayout.
@@ -481,6 +485,24 @@ export const useLayoutStore = create<LayoutState>((set, get) => ({
     if (!workspace.tiles.some((t) => t.uid === uid)) return;
     const tiles = workspace.tiles.map((t) =>
       t.uid === uid ? { ...t, instanceConfig } : t,
+    );
+    applyWorkspaceMutation(set, get, { ...workspace, tiles });
+  },
+
+  toggleTileLock: (uid) => {
+    const { workspace } = get();
+    if (!workspace.tiles.some((t) => t.uid === uid)) return;
+    const tiles = workspace.tiles.map((t) =>
+      t.uid === uid ? { ...t, isLocked: !t.isLocked } : t,
+    );
+    applyWorkspaceMutation(set, get, { ...workspace, tiles });
+  },
+
+  toggleTileHeaderHidden: (uid) => {
+    const { workspace } = get();
+    if (!workspace.tiles.some((t) => t.uid === uid)) return;
+    const tiles = workspace.tiles.map((t) =>
+      t.uid === uid ? { ...t, headerHidden: !t.headerHidden } : t,
     );
     applyWorkspaceMutation(set, get, { ...workspace, tiles });
   },

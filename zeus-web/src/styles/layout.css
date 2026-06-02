@@ -434,26 +434,26 @@
 .topbar {
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 0 14px;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 6px 18px;
+  padding: 6px 14px;
   background: var(--bg-0);
   border: 0;
   border-bottom: 1px solid var(--line);
   border-radius: 0;
   box-shadow: none;
-  height: 60px;
-  overflow: hidden;
+  min-height: 60px;
+  height: auto;
+  overflow: visible;
 }
 .topbar .topbar-controls {
   display: flex;
   align-items: center;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 6px 8px;
   min-width: 0;
-  /* Allow the controls block to scroll horizontally instead of bleeding off
-     the bar on narrow desktop windows; the bar's own overflow:hidden keeps
-     it from spilling into the workspace below. */
-  overflow-x: auto;
-  scrollbar-width: thin;
+  flex: 1 1 auto;
 }
 /* Topbar buttons read as flat regions of the bar, not raised chiclets.
    The .ctrl-lbl above each .btn-row remains the visual anchor for the

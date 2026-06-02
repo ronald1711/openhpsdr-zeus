@@ -62,7 +62,7 @@ export const useToolbarFavoritesStore = create<ToolbarFavoritesState>()((set) =>
   step: [...DEFAULT_STEP],
   stepHz: DEFAULT_STEP_HZ,
   setFavorites: (kind, slots) => {
-    if (slots.length !== 3) return;
+    if (slots.length < 1) return;
     if (kind === 'mode') set({ mode: slots });
     else if (kind === 'band') set({ band: slots });
     else if (kind === 'step') set({ step: slots });

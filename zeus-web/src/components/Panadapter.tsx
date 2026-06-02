@@ -49,6 +49,7 @@ import { cancelDrawBusFrame, requestDrawBusFrame } from '../realtime/draw-bus';
 import { registerFrameConsumer, useDisplayStore } from '../state/display-store';
 import { useDisplaySettingsStore } from '../state/display-settings-store';
 import { useTxStore } from '../state/tx-store';
+import { useUiPrefsStore } from '../state/ui-prefs-store';
 import { usePanTuneGesture } from '../util/use-pan-tune-gesture';
 import { FreqAxis } from './FreqAxis';
 import { PassbandOverlay } from './PassbandOverlay';
@@ -121,13 +122,12 @@ export function Panadapter() {
 
     const resize = () => {
       const { width, height } = container.getBoundingClientRect();
-      // Clamp the WebGL backing store at DPR=1. On a Retina display the
-      // native devicePixelRatio is 2 (or higher on 5K), which means the
-      // panadapter would render at 4× the pixels and feed 4× the texture
-      // data through every composite. The trace is a single-pixel-wide line
-      // over a smooth dB gradient — sub-pixel antialiasing is not visible
-      // and not worth the GPU cost. Browser CSS scaling fills the difference.
-      const dpr = Math.min(1, window.devicePixelRatio || 1);
+      // Resolve the backing-store DPR from the user's canvas sharpness preference.
+      const { canvasDpr } = useUiPrefsStore.getState();
+      const rawDpr = window.devicePixelRatio || 1;
+      const dpr = canvasDpr === 'crisp' ? rawDpr
+                : canvasDpr === 'balanced' ? Math.min(1.5, rawDpr)
+                : Math.min(1, rawDpr);
       const w = Math.max(1, Math.round(width * dpr));
       const h = Math.max(1, Math.round(height * dpr));
       canvas.width = w;
@@ -236,10 +236,13 @@ export function Panadapter() {
       }
     });
 
+    const unsubDpr = useUiPrefsStore.subscribe(() => resize());
+
     return () => {
       unsub();
       unsubSettings();
       unsubTx();
+      unsubDpr();
       ro.disconnect();
       io.disconnect();
       document.removeEventListener('visibilitychange', onVisibilityChange);

@@ -102,7 +102,7 @@ export function BandFavorites() {
       options={BAND_OPTIONS}
       currentKey={currentBand}
       onSelect={onSelect}
-      minWidth={170}
+      slotCount={5}
     />
   );
 }

@@ -49,6 +49,7 @@ import { cancelDrawBusFrame, requestDrawBusFrame } from '../realtime/draw-bus';
 import { registerFrameConsumer, useDisplayStore } from '../state/display-store';
 import { useDisplaySettingsStore } from '../state/display-settings-store';
 import { useTxStore } from '../state/tx-store';
+import { useUiPrefsStore } from '../state/ui-prefs-store';
 import { usePanTuneGesture } from '../util/use-pan-tune-gesture';
 import { WfDbScale } from './WfDbScale';
 
@@ -125,12 +126,12 @@ export function Waterfall({ transparent = false }: WaterfallProps = {}) {
 
     const resize = () => {
       const { width, height } = container.getBoundingClientRect();
-      // Clamp the WebGL backing store at DPR=1. Waterfall is typically the
-      // largest GPU surface in the workspace; running it at native Retina
-      // DPR pushes 4× pixel data through every composite for no visible
-      // gain (the colormap is a smooth gradient and the per-row history
-      // shift is integer-pixel). Same rationale as Panadapter.
-      const dpr = Math.min(1, window.devicePixelRatio || 1);
+      // Resolve the backing-store DPR from the user's canvas sharpness preference.
+      const { canvasDpr } = useUiPrefsStore.getState();
+      const rawDpr = window.devicePixelRatio || 1;
+      const dpr = canvasDpr === 'crisp' ? rawDpr
+                : canvasDpr === 'balanced' ? Math.min(1.5, rawDpr)
+                : Math.min(1, rawDpr);
       const w = Math.max(1, Math.round(width * dpr));
       const h = Math.max(1, Math.round(height * dpr));
       canvas.width = w;
@@ -209,10 +210,13 @@ export function Waterfall({ transparent = false }: WaterfallProps = {}) {
       }
     });
 
+    const unsubDpr = useUiPrefsStore.subscribe(() => resize());
+
     return () => {
       unsub();
       unsubSettings();
       unsubTx();
+      unsubDpr();
       ro.disconnect();
       io.disconnect();
       document.removeEventListener('visibilitychange', onVisibilityChange);

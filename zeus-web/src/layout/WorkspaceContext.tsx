@@ -56,16 +56,10 @@ export interface EffectiveHome {
 
 // All workspace-level state and callbacks that panel components need.
 // App.tsx creates this context; panels consume it via useWorkspace().
-// Keeping state in App.tsx (rather than lifting to Zustand) is intentional
-// for Phase 1 — the context is just plumbing, not a state refactor.
+// Radio connection state (connected, moxOn, tunOn, mode, vfoHz) lives in
+// Zustand stores — panels that need those values subscribe directly so
+// high-frequency VFO updates don't re-render unrelated consumers.
 export interface WorkspaceCtx {
-  // Connection
-  connected: boolean;
-  moxOn: boolean;
-  tunOn: boolean;
-  mode: string;
-  vfoHz: number;
-
   // QRZ / Terminator
   callsign: string;
   setCallsign: (v: string) => void;

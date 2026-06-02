@@ -17,10 +17,12 @@ import { BackgroundSettingsPanel } from './BackgroundSettingsPanel';
 import { ThemeSettingsPanel } from './ThemeSettingsPanel';
 import { ToolbarSettingsPanel } from './ToolbarSettingsPanel';
 import { TraceColorPanel } from './TraceColorPanel';
+import { UIScalePanel } from './UIScalePanel';
 
 export function DisplayPanel() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
+      <UIScalePanel />
       <ThemeSettingsPanel />
       <ToolbarSettingsPanel />
       <BackgroundSettingsPanel />

@@ -52,6 +52,10 @@ export interface WorkspaceTile {
    *  uses this in v1 (carries MetersPanelConfig). Forward-compatible:
    *  unknown panels' instanceConfig is preserved verbatim across save/load. */
   instanceConfig?: unknown;
+  /** True if the layout is frozen for this tile (static positioning). */
+  isLocked?: boolean;
+  /** True if the header should auto-hide on mouse leave. */
+  headerHidden?: boolean;
 }
 
 /** Top-level workspace blob persisted to /api/ui/layout. */
@@ -157,6 +161,8 @@ export function parseWorkspaceLayout(raw: unknown): WorkspaceLayout {
       ...(tile.instanceConfig !== undefined
         ? { instanceConfig: tile.instanceConfig }
         : {}),
+      ...(tile.isLocked !== undefined ? { isLocked: !!tile.isLocked } : {}),
+      ...(tile.headerHidden !== undefined ? { headerHidden: !!tile.headerHidden } : {}),
     });
   }
   return { schemaVersion: 7, tiles };

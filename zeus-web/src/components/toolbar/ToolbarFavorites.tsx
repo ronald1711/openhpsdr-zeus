@@ -24,6 +24,8 @@ export type ToolbarFavoritesProps = {
   currentKey: string | null;
   onSelect: (key: string) => void;
   minWidth?: number;
+  /** Number of pinned favorite slots shown inline. Default 3. */
+  slotCount?: number;
 };
 
 const DRAG_MIME_PREFIX = 'application/x-zeus-toolbar-fav-';
@@ -41,7 +43,8 @@ export function ToolbarFavorites({
   options,
   currentKey,
   onSelect,
-  minWidth = 180,
+  minWidth = 0,
+  slotCount = 3,
 }: ToolbarFavoritesProps) {
   const slots = useToolbarFavoritesStore((s) => s[kind]);
   const setFavorites = useToolbarFavoritesStore((s) => s.setFavorites);
@@ -60,16 +63,16 @@ export function ToolbarFavorites({
   // sees an empty button.
   const validKeys = new Set(options.map((o) => o.key));
   const safeSlots: string[] =
-    slots.length === 3 && slots.every((k) => validKeys.has(k))
+    slots.length === slotCount && slots.every((k) => validKeys.has(k))
       ? slots
       : (() => {
           const fallback: string[] = [];
           for (const o of options) {
-            if (fallback.length === 3) break;
-            fallback.push(o.key);
+            if (fallback.length === slotCount) break;
+            if (!fallback.includes(o.key)) fallback.push(o.key);
           }
           const filler = options[0]?.key;
-          while (fallback.length < 3 && filler !== undefined) {
+          while (fallback.length < slotCount && filler !== undefined) {
             fallback.push(filler);
           }
           return fallback;

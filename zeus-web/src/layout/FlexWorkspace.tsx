@@ -30,6 +30,7 @@ import { useWorkspace } from './WorkspaceContext';
 import { useLayoutStore } from '../state/layout-store';
 import { useThemeStore } from '../state/theme-store';
 import { getPanelDef } from './panels';
+import { Eye, EyeOff, Lock, Trash2, Unlock } from 'lucide-react';
 import { usePluginPanels } from '../plugins/runtime/usePluginPanels';
 import {
   WORKSPACE_GRID_COLS,
@@ -143,6 +144,19 @@ function WorkspaceCanvas({
   const preventCollision = useLayoutStore((s) => s.preventCollision);
   const customMargin = useLayoutStore((s) => s.customMargin);
   const margin = customMargin !== -1 ? customMargin : (theme === 'classic' ? 3 : 6);
+  const [contextMenu, setContextMenu] = useState<{
+    x: number;
+    y: number;
+    tileUid: string;
+  } | null>(null);
+
+  const handleContextMenuTile = useCallback((e: React.MouseEvent, tileUid: string) => {
+    setContextMenu({
+      x: e.clientX,
+      y: e.clientY,
+      tileUid,
+    });
+  }, []);
   // Subscribe to plugin-registered panels so rglLayouts recomputes once
   // plugin modules load at startup (getPanelDef inside the useMemo would
   // otherwise return undefined and never re-resolve).
@@ -191,6 +205,7 @@ function WorkspaceCanvas({
           h: t.h,
           minW: WORKSPACE_TILE_MIN_W,
           minH: WORKSPACE_TILE_MIN_H,
+          static: !!t.isLocked,
           ...(def?.maxW !== undefined ? { maxW: def.maxW } : {}),
           ...(def?.maxH !== undefined ? { maxH: def.maxH } : {}),
         };
@@ -243,10 +258,22 @@ function WorkspaceCanvas({
         >
           {tiles.map((tile) => (
             <div key={tile.uid} data-tile-uid={tile.uid}>
-              <PanelTile tile={tile} onRemoveTile={onRemoveTile} />
+              <PanelTile
+                tile={tile}
+                onRemoveTile={onRemoveTile}
+                onContextMenu={(e) => handleContextMenuTile(e, tile.uid)}
+              />
             </div>
           ))}
         </Grid>
+      )}
+      {contextMenu && (
+        <ContextMenu
+          x={contextMenu.x}
+          y={contextMenu.y}
+          tileUid={contextMenu.tileUid}
+          onClose={() => setContextMenu(null)}
+        />
       )}
     </div>
   );
@@ -255,6 +282,7 @@ function WorkspaceCanvas({
 interface PanelTileProps {
   tile: WorkspaceTile;
   onRemoveTile: (uid: string) => void;
+  onContextMenu: (e: React.MouseEvent) => void;
 }
 
 // Memoised so a parent re-render (e.g. another tile's drag updating the
@@ -264,6 +292,7 @@ interface PanelTileProps {
 const PanelTile = memo(function PanelTile({
   tile,
   onRemoveTile,
+  onContextMenu,
 }: PanelTileProps) {
   const handleRemove = useCallback(
     () => onRemoveTile(tile.uid),
@@ -277,14 +306,14 @@ const PanelTile = memo(function PanelTile({
   // `.workspace-tile-close` button bound to the injected onRemove.
   if (def.headerless) {
     return (
-      <div className="workspace-tile workspace-tile--headerless">
+      <div className={`workspace-tile workspace-tile--headerless ${tile.isLocked ? 'tile-locked' : ''}`}>
         <PanelBody tile={tile} onRemove={handleRemove} />
       </div>
     );
   }
   return (
-    <div className="workspace-tile">
-      <TileChrome title={def.name} onRemove={handleRemove} />
+    <div className={`workspace-tile ${tile.isLocked ? 'tile-locked' : ''} ${tile.headerHidden ? 'tile-header-autohide' : ''}`}>
+      <TileChrome title={def.name} onRemove={handleRemove} onContextMenu={onContextMenu} />
       <div className="workspace-tile-body">
         <PanelBody tile={tile} />
       </div>
@@ -366,5 +395,111 @@ function MeterGroupTileBody({
 
   return (
     <MeterGroupPanel config={config} setConfig={setConfig} onRemove={onRemove} />
+  );
+}
+
+function ContextMenu({
+  x,
+  y,
+  tileUid,
+  onClose,
+}: {
+  x: number;
+  y: number;
+  tileUid: string;
+  onClose: () => void;
+}) {
+  const toggleTileLock = useLayoutStore((s) => s.toggleTileLock);
+  const toggleTileHeaderHidden = useLayoutStore((s) => s.toggleTileHeaderHidden);
+  const removeTile = useLayoutStore((s) => s.removeTile);
+  const tiles = useLayoutStore((s) => s.workspace.tiles);
+  const tile = tiles.find((t) => t.uid === tileUid);
+
+  const menuRef = useRef<HTMLDivElement>(null);
+  const [coords, setCoords] = useState({ left: x, top: y });
+
+  useEffect(() => {
+    if (!menuRef.current) return;
+    const rect = menuRef.current.getBoundingClientRect();
+    let nextLeft = x;
+    let nextTop = y;
+    if (x + rect.width > window.innerWidth) {
+      nextLeft = window.innerWidth - rect.width - 8;
+    }
+    if (y + rect.height > window.innerHeight) {
+      nextTop = window.innerHeight - rect.height - 8;
+    }
+    setCoords({ left: Math.max(8, nextLeft), top: Math.max(8, nextTop) });
+  }, [x, y]);
+
+  // Click away listener
+  useEffect(() => {
+    const clickHandler = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        onClose();
+      }
+    };
+    const keyHandler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    document.addEventListener('mousedown', clickHandler, { capture: true });
+    document.addEventListener('keydown', keyHandler);
+    return () => {
+      document.removeEventListener('mousedown', clickHandler, { capture: true });
+      document.removeEventListener('keydown', keyHandler);
+    };
+  }, [onClose]);
+
+  if (!tile) return null;
+
+  return (
+    <div
+      ref={menuRef}
+      className="workspace-context-menu"
+      style={{
+        position: 'fixed',
+        left: coords.left,
+        top: coords.top,
+        zIndex: 9999,
+      }}
+      onContextMenu={(e) => e.preventDefault()}
+    >
+      <button
+        type="button"
+        className="context-menu-item"
+        onClick={() => {
+          toggleTileLock(tileUid);
+          onClose();
+        }}
+      >
+        {tile.isLocked ? <Unlock size={14} /> : <Lock size={14} />}
+        <span>{tile.isLocked ? 'Unlock Module' : 'Lock Layout'}</span>
+      </button>
+      <button
+        type="button"
+        className="context-menu-item"
+        onClick={() => {
+          toggleTileHeaderHidden(tileUid);
+          onClose();
+        }}
+      >
+        {tile.headerHidden ? <Eye size={14} /> : <EyeOff size={14} />}
+        <span>{tile.headerHidden ? 'Show Titlebar' : 'Auto-hide Titlebar'}</span>
+      </button>
+      <div className="context-menu-divider" />
+      <button
+        type="button"
+        className="context-menu-item danger"
+        onClick={() => {
+          removeTile(tileUid);
+          onClose();
+        }}
+      >
+        <Trash2 size={14} />
+        <span>Remove Panel</span>
+      </button>
+    </div>
   );
 }

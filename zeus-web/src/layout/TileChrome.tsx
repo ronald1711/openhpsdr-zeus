@@ -19,11 +19,20 @@ export interface TileChromeProps {
   /** Optional extra header buttons rendered between the title and the
    *  remove X (e.g. a panel-specific gear icon). */
   rightSlot?: ReactNode;
+  onContextMenu?: (e: React.MouseEvent) => void;
 }
 
-export function TileChrome({ title, onRemove, rightSlot }: TileChromeProps) {
+export function TileChrome({ title, onRemove, rightSlot, onContextMenu }: TileChromeProps) {
   return (
-    <div className="workspace-tile-header">
+    <div
+      className="workspace-tile-header"
+      onContextMenu={(e) => {
+        if (onContextMenu) {
+          e.preventDefault();
+          onContextMenu(e);
+        }
+      }}
+    >
       <span
         className="workspace-tile-drag-handle"
         aria-hidden="true"
