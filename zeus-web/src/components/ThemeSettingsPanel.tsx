@@ -174,6 +174,48 @@ const THEME_OPTIONS: ReadonlyArray<{
     blurb: 'Futuristic sci-fi console layout featuring warm yellow, orange, and purple accent panels.',
     swatch: '#ff9900',
   },
+  {
+    id: 'theblue',
+    label: 'OE3IDE TheBlue',
+    blurb: 'Sleek navy-blue chassis texture with electric ice blue buttons and highlights.',
+    swatch: '#0a1020',
+  },
+  {
+    id: 'steampunk',
+    label: 'W1AEX Steampunk',
+    blurb: 'Industrial brass and copper detailing on textured dark cast iron panels.',
+    swatch: '#d4883b',
+  },
+  {
+    id: 'blackglass',
+    label: 'VA2CST Black Glass',
+    blurb: 'Polished high-gloss dark glass/carbon panels with pure white labels and neon blue VFO.',
+    swatch: '#030810',
+  },
+  {
+    id: 'seamoss',
+    label: 'KA5KKT SeaMoss',
+    blurb: 'Soft sage/sea-moss green painted metal chassis with vintage glowing jade indicators.',
+    swatch: '#4e6e58',
+  },
+  {
+    id: 'darkmetal',
+    label: 'W1AEX Dark Metal',
+    blurb: 'Brutal anodized black brushed-aluminum front panel with high-contrast amber readouts.',
+    swatch: '#181818',
+  },
+  {
+    id: 'openhpsdrgray',
+    label: 'OpenHPSDR Gray',
+    blurb: 'Classic flat medium grey transceiver chassis paint with standard active controls.',
+    swatch: '#525a62',
+  },
+  {
+    id: 'yaesu',
+    label: 'OE3IDE Yaesu',
+    blurb: 'Tactile charcoal texture paint finish with Yaesu FTdx gold trim and amber VFO.',
+    swatch: '#2a2725',
+  },
 ];
 
 function isHexColor(v: string): boolean {

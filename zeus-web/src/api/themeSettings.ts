@@ -8,7 +8,19 @@
 // so the look-and-feel follows them across browsers + devices.
 // Mirrors src/api/nrUiPrefs.ts; same minimal-API call shape.
 
-export type ThemeIdRaw = 'dark' | 'light' | 'classic' | 'matrix' | 'startrek';
+export type ThemeIdRaw =
+  | 'dark'
+  | 'light'
+  | 'classic'
+  | 'matrix'
+  | 'startrek'
+  | 'theblue'
+  | 'steampunk'
+  | 'blackglass'
+  | 'seamoss'
+  | 'darkmetal'
+  | 'openhpsdrgray'
+  | 'yaesu';
 
 export type ThemeSettingsState = {
   theme: ThemeIdRaw;
@@ -30,6 +42,20 @@ function normalize(raw: ThemeSettingsDtoRaw): ThemeSettingsState {
       ? 'matrix'
       : raw.theme === 'startrek'
       ? 'startrek'
+      : raw.theme === 'theblue'
+      ? 'theblue'
+      : raw.theme === 'steampunk'
+      ? 'steampunk'
+      : raw.theme === 'blackglass'
+      ? 'blackglass'
+      : raw.theme === 'seamoss'
+      ? 'seamoss'
+      : raw.theme === 'darkmetal'
+      ? 'darkmetal'
+      : raw.theme === 'openhpsdrgray'
+      ? 'openhpsdrgray'
+      : raw.theme === 'yaesu'
+      ? 'yaesu'
       : 'dark';
   const overrides: Record<string, string> = {};
   if (raw.overrides) {

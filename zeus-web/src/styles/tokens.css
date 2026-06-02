@@ -651,6 +651,447 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
 }
 
 /* ===========================================================
+   THEBLUE THEME — Sleek navy blue chassis texture with electric ice blue buttons
+   =========================================================== */
+:root[data-theme="theblue"] {
+  --bg-app:       #060a14;
+  --bg-workspace: #060a14;
+  --bg-0:         #060a14;
+  --bg-1:         #0c1224;
+  --bg-2:         #131c36;
+  --bg-3:         #1d284a;
+  --bg-inset:     #020408;
+  --bg-meter:     #010204;
+
+  --line:         #1c2847;
+  --line-soft:    #11192e;
+  --line-strong:  #293b66;
+
+  --panel-head-top: #101933;
+  --panel-head-bot: #0c1224;
+  --panel-border:   #1c2847;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #101933;
+  --panel-bot:      #0c1224;
+  --panel-edge:     #1c2847;
+
+  --btn-top:        #15203d;
+  --btn-bot:        #0c1224;
+  --btn-hl:         transparent;
+  --btn-edge:       #243766;
+  --btn-text:       #8fe2ff;
+  
+  --btn-active-top: #0088ff;
+  --btn-active-bot: #004488;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #ffffff;
+  --fg-1:         #b8cdfc;
+  --fg-2:         #8fa6db;
+  --fg-3:         #5a6b99;
+  --fg-4:         #334066;
+
+  --accent:        #0088ff;
+  --accent-bright: #8fe2ff;
+  --accent-soft:   rgba(0,136,255,0.1);
+  --accent-line:   rgba(0,136,255,0.4);
+
+  --vfo-led-color: #8fe2ff;
+  --vfo-led-glow:  rgba(143, 226, 255, 0.55);
+  --vfo-led-dim:   rgba(143, 226, 255, 0.12);
+
+  --font-sans:    'Inter', sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+:root[data-theme="theblue"] .freq-digits {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  color: var(--vfo-led-color) !important;
+  text-shadow: 0 0 10px var(--vfo-led-glow) !important;
+}
+:root[data-theme="theblue"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="theblue"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+
+/* ===========================================================
+   STEAMPUNK THEME — Industrial brass and copper detailing on textured cast iron
+   =========================================================== */
+:root[data-theme="steampunk"] {
+  --bg-app:       #13100e;
+  --bg-workspace: #13100e;
+  --bg-0:         #13100e;
+  --bg-1:         #1e1814;
+  --bg-2:         #29211c;
+  --bg-3:         #382c25;
+  --bg-inset:     #080605;
+  --bg-meter:     #040302;
+
+  --line:         #362a22;
+  --line-soft:    #241b16;
+  --line-strong:  #4f3e33;
+
+  --panel-head-top: #251e19;
+  --panel-head-bot: #1e1814;
+  --panel-border:   #362a22;
+  --panel-hl-top:   rgba(255,255,255,0.02);
+  --panel-top:      #251e19;
+  --panel-bot:      #1e1814;
+  --panel-edge:     #362a22;
+
+  --btn-top:        #302620;
+  --btn-bot:        #1e1814;
+  --btn-hl:         transparent;
+  --btn-edge:       #4c3a30;
+  --btn-text:       #ffd9b3;
+  
+  --btn-active-top: #d4883b;
+  --btn-active-bot: #8f541f;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #ffd9b3;
+  --fg-1:         #f5c293;
+  --fg-2:         #cda073;
+  --fg-3:         #8f6c4b;
+  --fg-4:         #59422d;
+
+  --accent:        #d4883b;
+  --accent-bright: #ffb061;
+  --accent-soft:   rgba(212,136,59,0.1);
+  --accent-line:   rgba(212,136,59,0.4);
+
+  --vfo-led-color: #ffb061;
+  --vfo-led-glow:  rgba(255, 176, 97, 0.55);
+  --vfo-led-dim:   rgba(255, 176, 97, 0.12);
+
+  --font-sans:    'Inter', sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+:root[data-theme="steampunk"] .freq-digits {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  color: var(--vfo-led-color) !important;
+  text-shadow: 0 0 10px var(--vfo-led-glow) !important;
+}
+:root[data-theme="steampunk"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="steampunk"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+
+/* ===========================================================
+   BLACKGLASS THEME — Sleek polished carbon chassis and neon blue VFO
+   =========================================================== */
+:root[data-theme="blackglass"] {
+  --bg-app:       #010204;
+  --bg-workspace: #010204;
+  --bg-0:         #010204;
+  --bg-1:         #060910;
+  --bg-2:         #101524;
+  --bg-3:         #1a2034;
+  --bg-inset:     #000000;
+  --bg-meter:     #010102;
+
+  --line:         #161d2d;
+  --line-soft:    #0a0e16;
+  --line-strong:  #29344f;
+
+  --panel-head-top: #0d1222;
+  --panel-head-bot: #060910;
+  --panel-border:   #161d2d;
+  --panel-hl-top:   rgba(255,255,255,0.03);
+  --panel-top:      #0d1222;
+  --panel-bot:      #060910;
+  --panel-edge:     #161d2d;
+
+  --btn-top:        #12182b;
+  --btn-bot:      #060910;
+  --btn-hl:       transparent;
+  --btn-edge:     #253154;
+  --btn-text:     #cbd5e1;
+
+  --btn-active-top: #00a2ff;
+  --btn-active-bot: #005f99;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #ffffff;
+  --fg-1:         #cbd5e1;
+  --fg-2:         #94a3b8;
+  --fg-3:         #475569;
+  --fg-4:         #1e293b;
+
+  --accent:        #00a2ff;
+  --accent-bright: #60cdff;
+  --accent-soft:   rgba(0,162,255,0.1);
+  --accent-line:   rgba(0,162,255,0.4);
+
+  --vfo-led-color: #60cdff;
+  --vfo-led-glow:  rgba(96, 205, 255, 0.55);
+  --vfo-led-dim:   rgba(96, 205, 255, 0.12);
+
+  --font-sans:    'Inter', sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+:root[data-theme="blackglass"] .freq-digits {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  color: var(--vfo-led-color) !important;
+  text-shadow: 0 0 10px var(--vfo-led-glow) !important;
+}
+:root[data-theme="blackglass"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="blackglass"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+
+/* ===========================================================
+   SEAMOSS THEME — Soft sage green paint with glowing jade indicators
+   =========================================================== */
+:root[data-theme="seamoss"] {
+  --bg-app:       #171e1a;
+  --bg-workspace: #171e1a;
+  --bg-0:         #171e1a;
+  --bg-1:         #232f27;
+  --bg-2:         #303f35;
+  --bg-3:         #3d5144;
+  --bg-inset:     #090c0a;
+  --bg-meter:     #050605;
+
+  --line:         #3b4c41;
+  --line-soft:    #26322b;
+  --line-strong:  #536b5c;
+
+  --panel-head-top: #2b3a30;
+  --panel-head-bot: #232f27;
+  --panel-border:   #3b4c41;
+  --panel-hl-top:   rgba(255,255,255,0.02);
+  --panel-top:      #2b3a30;
+  --panel-bot:      #232f27;
+  --panel-edge:     #3b4c41;
+
+  --btn-top:        #324237;
+  --btn-bot:        #232f27;
+  --btn-hl:         transparent;
+  --btn-edge:       #4c6453;
+  --btn-text:       #ecf2ee;
+  
+  --btn-active-top: #4e9b67;
+  --btn-active-bot: #2c583a;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #ecf2ee;
+  --fg-1:         #c3d6c9;
+  --fg-2:         #9ab5a4;
+  --fg-3:         #6b8072;
+  --fg-4:         #425047;
+
+  --accent:        #4e9b67;
+  --accent-bright: #7be2a3;
+  --accent-soft:   rgba(78,155,103,0.1);
+  --accent-line:   rgba(78,155,103,0.4);
+
+  --vfo-led-color: #7be2a3;
+  --vfo-led-glow:  rgba(123, 226, 163, 0.55);
+  --vfo-led-dim:   rgba(123, 226, 163, 0.12);
+
+  --font-sans:    'Inter', sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+:root[data-theme="seamoss"] .freq-digits {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  color: var(--vfo-led-color) !important;
+  text-shadow: 0 0 10px var(--vfo-led-glow) !important;
+}
+:root[data-theme="seamoss"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="seamoss"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+
+/* ===========================================================
+   DARKMETAL THEME — Brushed black metal front panel and high-contrast amber
+   =========================================================== */
+:root[data-theme="darkmetal"] {
+  --bg-app:       #080808;
+  --bg-workspace: #080808;
+  --bg-0:         #080808;
+  --bg-1:         #101010;
+  --bg-2:         #1a1a1a;
+  --bg-3:         #242424;
+  --bg-inset:     #020202;
+  --bg-meter:     #000000;
+
+  --line:         #222222;
+  --line-soft:    #151515;
+  --line-strong:  #333333;
+
+  --panel-head-top: #151515;
+  --panel-head-bot: #101010;
+  --panel-border:   #222222;
+  --panel-hl-top:   rgba(255,255,255,0.01);
+  --panel-top:      #151515;
+  --panel-bot:      #101010;
+  --panel-edge:     #222222;
+
+  --btn-top:        #1e1e1e;
+  --btn-bot:        #101010;
+  --btn-hl:         transparent;
+  --btn-edge:       #303030;
+  --btn-text:       #d4d4d4;
+  
+  --btn-active-top: #e28a2b;
+  --btn-active-bot: #8f510f;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #ffffff;
+  --fg-1:         #d4d4d4;
+  --fg-2:         #a3a3a3;
+  --fg-3:         #737373;
+  --fg-4:         #404040;
+
+  --accent:        #e28a2b;
+  --accent-bright: #ffb061;
+  --accent-soft:   rgba(226,138,43,0.1);
+  --accent-line:   rgba(226,138,43,0.4);
+
+  --vfo-led-color: #ffb061;
+  --vfo-led-glow:  rgba(255, 176, 97, 0.55);
+  --vfo-led-dim:   rgba(255, 176, 97, 0.12);
+
+  --font-sans:    'Inter', sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+:root[data-theme="darkmetal"] .freq-digits {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  color: var(--vfo-led-color) !important;
+  text-shadow: 0 0 10px var(--vfo-led-glow) !important;
+}
+:root[data-theme="darkmetal"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="darkmetal"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+
+/* ===========================================================
+   OPENHPSDRGRAY THEME — Classic flat medium grey transceiver paint
+   =========================================================== */
+:root[data-theme="openhpsdrgray"] {
+  --bg-app:       #1e2226;
+  --bg-workspace: #1e2226;
+  --bg-0:         #1e2226;
+  --bg-1:         #2a2f34;
+  --bg-2:         #394047;
+  --bg-3:         #4a535c;
+  --bg-inset:     #08090a;
+  --bg-meter:     #030404;
+
+  --line:         #454d56;
+  --line-soft:    #2d3238;
+  --line-strong:  #5c6773;
+
+  --panel-head-top: #343a41;
+  --panel-head-bot: #2a2f34;
+  --panel-border:   #454d56;
+  --panel-hl-top:   rgba(255,255,255,0.03);
+  --panel-top:      #343a41;
+  --panel-bot:      #2a2f34;
+  --panel-edge:     #454d56;
+
+  --btn-top:        #394047;
+  --btn-bot:        #2a2f34;
+  --btn-hl:         transparent;
+  --btn-edge:       #535c66;
+  --btn-text:       #cbd5e1;
+  
+  --btn-active-top: #0c5f9c;
+  --btn-active-bot: #06395e;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #ffffff;
+  --fg-1:         #cbd5e1;
+  --fg-2:         #94a3b8;
+  --fg-3:         #64748b;
+  --fg-4:         #334155;
+
+  --accent:        #0c5f9c;
+  --accent-bright: #4ea6ff;
+  --accent-soft:   rgba(12,95,156,0.1);
+  --accent-line:   rgba(12,95,156,0.4);
+
+  --vfo-led-color: #22c55e;
+  --vfo-led-glow:  rgba(34, 197, 94, 0.55);
+  --vfo-led-dim:   rgba(34, 197, 94, 0.12);
+
+  --font-sans:    'Inter', sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+:root[data-theme="openhpsdrgray"] .freq-digits {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  color: var(--vfo-led-color) !important;
+  text-shadow: 0 0 10px var(--vfo-led-glow) !important;
+}
+:root[data-theme="openhpsdrgray"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="openhpsdrgray"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+
+/* ===========================================================
+   YAESU THEME — Charcoal sand texture with Yaesu FTdx gold trim and amber
+   =========================================================== */
+:root[data-theme="yaesu"] {
+  --bg-app:       #12100f;
+  --bg-workspace: #12100f;
+  --bg-0:         #12100f;
+  --bg-1:         #1c1a18;
+  --bg-2:         #272522;
+  --bg-3:         #35322e;
+  --bg-inset:     #060505;
+  --bg-meter:     #030202;
+
+  --line:         #b89230;  /* Gold trim line */
+  --line-soft:    #1c1a18;
+  --line-strong:  #d9b24e;
+
+  --panel-head-top: #23201d;
+  --panel-head-bot: #1c1a18;
+  --panel-border:   #b89230;
+  --panel-hl-top:   rgba(255,255,255,0.03);
+  --panel-top:      #23201d;
+  --panel-bot:      #1c1a18;
+  --panel-edge:     #b89230;
+
+  --btn-top:        #2a2724;
+  --btn-bot:        #1c1a18;
+  --btn-hl:         transparent;
+  --btn-edge:       #4c3d14;
+  --btn-text:       #ebd8ab;
+  
+  --btn-active-top: #d9b24e;
+  --btn-active-bot: #8f7027;
+  --btn-active-text:#000000;
+
+  --fg-0:         #ebd8ab;
+  --fg-1:         #cfae7c;
+  --fg-2:         #9c825a;
+  --fg-3:         #665438;
+  --fg-4:         #3d3221;
+
+  --accent:        #d9b24e;
+  --accent-bright: #ffdf85;
+  --accent-soft:   rgba(217,178,78,0.1);
+  --accent-line:   rgba(217,178,78,0.4);
+
+  --vfo-led-color: #ebd8ab;
+  --vfo-led-glow:  rgba(235, 216, 171, 0.55);
+  --vfo-led-dim:   rgba(235, 216, 171, 0.12);
+
+  --font-sans:    'Inter', sans-serif;
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+}
+:root[data-theme="yaesu"] .freq-digits {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  color: var(--vfo-led-color) !important;
+  text-shadow: 0 0 10px var(--vfo-led-glow) !important;
+}
+:root[data-theme="yaesu"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="yaesu"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+
+/* ===========================================================
    Base resets
    =========================================================== */
 * { box-sizing: border-box; }
