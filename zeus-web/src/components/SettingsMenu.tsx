@@ -68,6 +68,18 @@ const TABS: ReadonlyArray<{ id: SettingsTabId; label: string }> = [
   { id: 'about', label: 'ABOUT' },
 ];
 
+const LAST_TAB_KEY = 'zeus.settings.lastTab';
+
+function readLastSettingsTab(): SettingsTabId {
+  try {
+    if (typeof localStorage === 'undefined') return 'pa';
+    const raw = localStorage.getItem(LAST_TAB_KEY);
+    return (raw as SettingsTabId) || 'pa';
+  } catch {
+    return 'pa';
+  }
+}
+
 type Props = {
   initialTab?: SettingsTabId;
   onClose: () => void;
@@ -78,7 +90,17 @@ type Props = {
 // layout-store.settingsViewOpen is true. Clicking any layout tab in the
 // LeftLayoutBar returns to the workspace (setActiveLayout clears the flag).
 export function SettingsView({ initialTab, onClose }: Props) {
-  const [active, setActive] = useState<SettingsTabId>(initialTab ?? 'pa');
+  const [active, setActive] = useState<SettingsTabId>(() => {
+    if (initialTab) return initialTab;
+    return readLastSettingsTab();
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(LAST_TAB_KEY, active);
+    } catch {}
+  }, [active]);
+
   const savePa = usePaStore((s) => s.save);
   const loadPa = usePaStore((s) => s.load);
   const paInflight = usePaStore((s) => s.inflight);
