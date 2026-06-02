@@ -75,9 +75,12 @@ const MODE_OPTIONS: ReadonlyArray<ModeOption> = [
 ];
 
 const FIT_OPTIONS: ReadonlyArray<{ id: BackgroundImageFit; label: string }> = [
-  { id: 'fit', label: 'Fit' },
-  { id: 'fill', label: 'Fill' },
+  { id: 'fill', label: 'Cover / Zoom to fill' },
+  { id: 'fit', label: 'Contain / Fit inside' },
   { id: 'stretch', label: 'Stretch' },
+  { id: 'original', label: 'Original size' },
+  { id: 'tile', label: 'Tile' },
+  { id: 'center', label: 'Center' },
 ];
 
 // Downscale large images on the way into localStorage so a phone-camera
@@ -250,7 +253,7 @@ export function BackgroundSettingsPanel() {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
             <span style={inlineLabel}>Sizing</span>
-            <div style={{ display: 'flex', gap: 6 }}>
+            <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
               {FIT_OPTIONS.map((opt) => {
                 const active = backgroundImageFit === opt.id;
                 return (

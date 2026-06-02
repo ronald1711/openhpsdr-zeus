@@ -100,7 +100,7 @@ export type PanBackgroundMode = 'basic' | 'beam-map' | 'image';
 // 'fit' → contain (entire image visible, may letterbox)
 // 'fill' → cover (fills the panel, may crop)
 // 'stretch' → 100% 100% (distorts to fit exactly)
-export type BackgroundImageFit = 'fit' | 'fill' | 'stretch';
+export type BackgroundImageFit = 'fit' | 'fill' | 'stretch' | 'original' | 'tile' | 'center';
 
 function readLegacyRxTraceColor(): string | null {
   try {

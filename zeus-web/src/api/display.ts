@@ -8,7 +8,7 @@
 
 export type DisplaySettings = {
   mode: 'basic' | 'beam-map' | 'image';
-  fit: 'fit' | 'fill' | 'stretch';
+  fit: 'fit' | 'fill' | 'stretch' | 'original' | 'tile' | 'center';
   hasImage: boolean;
   imageMime: string | null;
   rxTraceColor: string;
@@ -61,8 +61,13 @@ function normalize(raw: DisplaySettingsDtoRaw): DisplaySettings {
       ? raw.mode
       : 'basic';
   const fit =
-    raw.fit === 'fit' || raw.fit === 'fill' || raw.fit === 'stretch'
-      ? raw.fit
+    raw.fit === 'fit' ||
+    raw.fit === 'fill' ||
+    raw.fit === 'stretch' ||
+    raw.fit === 'original' ||
+    raw.fit === 'tile' ||
+    raw.fit === 'center'
+      ? (raw.fit as DisplaySettings['fit'])
       : 'fill';
   return {
     mode,

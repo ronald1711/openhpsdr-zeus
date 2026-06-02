@@ -1034,15 +1034,16 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-repeat: no-repeat;
-  background-position: center center;
   /* Letterbox area in 'fit' mode reads as a deliberate cinematic frame
      rather than the blue-gray app surface peeking through. */
   background-color: #000;
 }
-.image-layer.fit { background-size: contain; }
-.image-layer.fill { background-size: cover; }
-.image-layer.stretch { background-size: 100% 100%; }
+.image-layer.fit { background-size: contain; background-repeat: no-repeat; background-position: center center; }
+.image-layer.fill { background-size: cover; background-repeat: no-repeat; background-position: center center; }
+.image-layer.stretch { background-size: 100% 100%; background-repeat: no-repeat; background-position: center center; }
+.image-layer.original { background-size: auto; background-repeat: no-repeat; background-position: top left; }
+.image-layer.tile { background-size: auto; background-repeat: repeat; background-position: top left; }
+.image-layer.center { background-size: auto; background-repeat: no-repeat; background-position: center center; }
 
 /* ===== World-map layer (behind spectrum in QRZ mode) ===== */
 .map-layer {

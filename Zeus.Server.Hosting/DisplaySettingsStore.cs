@@ -183,7 +183,7 @@ public sealed class DisplaySettingsStore : IDisposable
     private static string NormalizeFit(string? raw) =>
         raw switch
         {
-            "fit" or "fill" or "stretch" => raw,
+            "fit" or "fill" or "stretch" or "original" or "tile" or "center" => raw,
             _ => "fill",
         };
 
