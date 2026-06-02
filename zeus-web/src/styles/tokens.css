@@ -1089,7 +1089,55 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   text-shadow: 0 0 10px var(--vfo-led-glow) !important;
 }
 :root[data-theme="yaesu"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
-:root[data-theme="yaesu"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="yaesu"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }/* Background images for the translated console skins */
+:root[data-theme="theblue"] body {
+  background-image: url('/themes/theblue/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="steampunk"] body {
+  background-image: url('/themes/steampunk/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="blackglass"] body {
+  background-image: url('/themes/blackglass/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="seamoss"] body {
+  background-image: url('/themes/seamoss/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="darkmetal"] body {
+  background-image: url('/themes/darkmetal/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="openhpsdrgray"] body {
+  background-image: url('/themes/openhpsdrgray/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="yaesu"] body {
+  background-image: url('/themes/yaesu/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="matrix"] body {
+  background-image: url('/themes/matrix/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 /* ===========================================================
    Base resets
