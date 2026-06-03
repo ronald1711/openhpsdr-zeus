@@ -300,6 +300,7 @@
 .left-layout-bar .lb-settings-slot {
   flex: 0 0 auto;
   display: flex;
+  flex-direction: column;
 }
 .left-layout-bar .lb-tab-settings {
   flex: 1;
@@ -308,6 +309,20 @@
   border-color: var(--accent);
   color: var(--accent);
   box-shadow: inset 0 1px 0 var(--btn-hl), 0 0 8px var(--accent-soft);
+}
+.left-layout-bar .lb-tab-power {
+  flex: 1;
+  color: var(--tx);
+  opacity: 0.75;
+}
+.left-layout-bar .lb-tab-power:hover {
+  opacity: 1;
+  color: var(--tx);
+  background: var(--tx-soft);
+}
+.left-layout-bar .lb-tab-power:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 /* ===== Settings view — workspace-replacing pane =====
@@ -436,14 +451,14 @@
   align-items: center;
   flex-wrap: wrap;
   align-content: center;
-  gap: 6px 18px;
-  padding: 6px 14px;
+  gap: 4px 8px;
+  padding: 4px 10px;
   background: var(--bg-0);
   border: 0;
   border-bottom: 1px solid var(--line);
   border-radius: 0;
   box-shadow: none;
-  min-height: 60px;
+  min-height: 52px;
   height: auto;
   overflow: visible;
 }
@@ -451,7 +466,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px 8px;
+  gap: 4px 6px;
   min-width: 0;
   flex: 1 1 auto;
 }

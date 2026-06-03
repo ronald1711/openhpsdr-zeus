@@ -44,8 +44,14 @@ export function ThemeApplier(): null {
     const decls = entries
       .map(([k, v]) => `  ${k}: ${v};`)
       .join('\n');
-    return `:root {\n${decls}\n}\n`;
-  }, [overrides]);
+    // Use the same selector specificity as the active theme block in tokens.css.
+    // Non-dark themes use :root[data-theme="xxx"] (specificity 0,1,0); a plain
+    // :root override (0,0,1) loses the cascade even when appended last. Matching
+    // the selector gives us equal specificity so the later-in-document injected
+    // <style> wins correctly.
+    const sel = theme === 'dark' ? ':root' : `:root[data-theme="${theme}"]`;
+    return `${sel} {\n${decls}\n}\n`;
+  }, [overrides, theme]);
 
   useEffect(() => {
     const id = 'zeus-theme-overrides';

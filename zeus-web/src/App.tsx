@@ -323,11 +323,7 @@ export default function App() {
 
           <div className="spacer" style={{ flex: 1 }} />
 
-          {/* Settings is reached from the LeftLayoutBar (bottom slot). The
-              top bar is now reserved for Disconnect when connected; while
-              disconnected the centre overlay owns Discover so we mount only
-              one ConnectPanel at a time. */}
-          {connected && <ConnectPanel compact />}
+          {/* Disconnect lives in the LeftLayoutBar power-button slot. */}
         </header>
       )}
 

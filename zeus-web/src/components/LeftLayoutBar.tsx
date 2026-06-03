@@ -24,9 +24,15 @@
 //
 // Issue #241: visual chrome reuses tokens.css; no new colors are introduced.
 
-import { useMemo, useState, type CSSProperties } from 'react';
+import { useCallback, useMemo, useState, type CSSProperties } from 'react';
 import { useLayoutStore } from '../state/layout-store';
 import { useDisplaySettingsStore } from '../state/display-settings-store';
+import { useConnectionStore } from '../state/connection-store';
+import {
+  disconnect as apiDisconnect,
+  disconnectP2 as apiDisconnectP2,
+  fetchState,
+} from '../api/client';
 import {
   LayoutSettingsModal,
   type LayoutSettingsValue,
@@ -72,6 +78,23 @@ export function LeftLayoutBar() {
       ['--lb-wash-b' as string]: db,
     };
   }, [rxTraceColor]);
+
+  const connected = useConnectionStore((s) => s.status === 'Connected');
+  const applyState = useConnectionStore((s) => s.applyState);
+  const [disconnecting, setDisconnecting] = useState(false);
+
+  const handleDisconnect = useCallback(async () => {
+    if (disconnecting) return;
+    setDisconnecting(true);
+    try {
+      try { await apiDisconnect(); } catch { /* may be P2 */ }
+      try { await apiDisconnectP2(); } catch { /* may have been P1 */ }
+      const fresh = await fetchState();
+      applyState(fresh);
+    } finally {
+      setDisconnecting(false);
+    }
+  }, [disconnecting, applyState]);
 
   const [modal, setModal] = useState<ModalState>({ kind: 'closed' });
 
@@ -147,7 +170,7 @@ export function LeftLayoutBar() {
                   >
                     ⚙
                   </button>
-                  {active && layouts.length > 1 && (
+                  {layouts.length > 1 && (
                     <button
                       type="button"
                       className="lb-x"
@@ -185,6 +208,18 @@ export function LeftLayoutBar() {
       <div className="lb-divider" aria-hidden />
 
       <div className="lb-settings-slot">
+        {connected && (
+          <button
+            type="button"
+            className="lb-tab lb-tab-power"
+            onClick={() => { void handleDisconnect(); }}
+            disabled={disconnecting}
+            title={disconnecting ? 'Disconnecting…' : 'Disconnect radio'}
+            aria-label="Disconnect radio"
+          >
+            <span className="lb-tab-icon" aria-hidden>⏻</span>
+          </button>
+        )}
         <button
           type="button"
           className={`lb-tab lb-tab-settings ${settingsViewOpen ? 'active' : ''}`}
