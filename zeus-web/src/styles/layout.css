@@ -31,6 +31,12 @@
   gap: 0;
 }
 
+/* UI Scale — zoom .app only so 100vh/100vw stay correct and the
+   sidebar + transport bar are never clipped by an overflowed root. */
+html[data-ui-scale="110"] .app { zoom: 110%; height: 90.9091vh; width: 90.9091vw; }
+html[data-ui-scale="125"] .app { zoom: 125%; height: 80vh;      width: 80vw;      }
+html[data-ui-scale="150"] .app { zoom: 150%; height: 66.6667vh; width: 66.6667vw; }
+
 .app > .left-layout-bar   { grid-column: 1; grid-row: 1 / -1; }
 .app > .topbar            { grid-column: 2; grid-row: 1; }
 .app > .workspace-area    { grid-column: 2; grid-row: 2; min-height: 0; }

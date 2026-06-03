@@ -2723,6 +2723,7 @@ body {
   color: var(--fg-0);
   font-family: var(--font-sans);
   font-size: var(--app-font-size, 12px);
+  font-weight: var(--app-font-weight, 400);
   line-height: 1.4;
   letter-spacing: 0;
   -webkit-font-smoothing: antialiased;

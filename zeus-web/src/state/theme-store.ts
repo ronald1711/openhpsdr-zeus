@@ -228,8 +228,9 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
   hydrated: false,
   setTheme: (theme) => {
     writeTheme(theme);
-    set({ theme });
-    schedulePush({ theme, overrides: get().overrides });
+    writeOverrides({});
+    set({ theme, overrides: {} });
+    schedulePush({ theme, overrides: {} });
   },
   setOverride: (token, hex) => {
     const next = { ...get().overrides };

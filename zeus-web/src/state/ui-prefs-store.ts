@@ -81,9 +81,15 @@ function writePrefs(prefs: StoredPrefs): void {
 
 function applyUiPrefs(prefs: StoredPrefs): void {
   const root = document.documentElement;
-  root.style.zoom = prefs.uiScale === 100 ? '' : `${prefs.uiScale}%`;
+  // Apply zoom via data attribute so CSS can scope it to .app only.
+  // Zooming html directly distorts 100vh/100vw and clips the sidebar + transport bar.
+  if (prefs.uiScale === 100) {
+    delete root.dataset['uiScale'];
+  } else {
+    root.dataset['uiScale'] = String(prefs.uiScale);
+  }
   root.style.setProperty('--app-font-size', FONT_SIZE_PX[prefs.fontSize]);
-  root.style.setProperty('--app-font-weight', prefs.fontBold ? '500' : '400');
+  root.style.setProperty('--app-font-weight', prefs.fontBold ? '700' : '400');
 }
 
 // Apply at module load using persisted values.
