@@ -80,7 +80,11 @@ public sealed class ThemeSettingsStore : IDisposable
     private static string NormalizeTheme(string? raw) =>
         raw switch
         {
-            "dark" or "light" or "classic" or "matrix" or "startrek" or "theblue" or "steampunk" or "blackglass" or "seamoss" or "darkmetal" or "openhpsdrgray" or "yaesu" => raw,
+            "dark" or "light" or "classic" or "matrix" or "startrek" or "theblue" or "steampunk" or "blackglass"
+            or "seamoss" or "darkmetal" or "openhpsdrgray" or "yaesu" or "anansmart" or "xmas" or "highvisual"
+            or "ik3vig" or "n2mdxhl2" or "n2mdxmics" or "rz1zr" or "alienpred" or "apache" or "circuit"
+            or "joker" or "kiss" or "kiss2" or "ledzep" or "maiden" or "metallica" or "nascar" or "riddler"
+            or "n2mdxst" or "starwars" or "terminator" or "tron" or "warriors" or "worldmaps" => raw,
             _ => "dark",
         };
 

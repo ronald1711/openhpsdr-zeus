@@ -20,7 +20,31 @@ export type ThemeIdRaw =
   | 'seamoss'
   | 'darkmetal'
   | 'openhpsdrgray'
-  | 'yaesu';
+  | 'yaesu'
+  | 'anansmart'
+  | 'xmas'
+  | 'highvisual'
+  | 'ik3vig'
+  | 'n2mdxhl2'
+  | 'n2mdxmics'
+  | 'rz1zr'
+  | 'alienpred'
+  | 'apache'
+  | 'circuit'
+  | 'joker'
+  | 'kiss'
+  | 'kiss2'
+  | 'ledzep'
+  | 'maiden'
+  | 'metallica'
+  | 'nascar'
+  | 'riddler'
+  | 'n2mdxst'
+  | 'starwars'
+  | 'terminator'
+  | 'tron'
+  | 'warriors'
+  | 'worldmaps';
 
 export type ThemeSettingsState = {
   theme: ThemeIdRaw;

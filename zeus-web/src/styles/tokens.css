@@ -1,4 +1,4 @@
-/* ===========================================================
+﻿/* ===========================================================
    Zeus SDR — Design tokens (v3 "Lifted Dark")
    Neutral near-black surfaces, electric blue accent, warm amber
    halos on meters, blue aurora on the VFO. Source of truth.
@@ -1199,6 +1199,1520 @@ html[data-fonts="geist"] { --font-sans: 'Inter', sans-serif; --font-mono: 'JetBr
   background-repeat: no-repeat;
 }
 
+:root[data-theme="anansmart"] {
+  --bg-app:       #6C6B6C;
+  --bg-workspace: #6C6B6C;
+  --bg-0:         #6C6B6C;
+  --bg-1:         #7C7B7C;
+  --bg-2:         #8C8B8C;
+  --bg-3:         #9D9B9D;
+  --bg-inset:     #363636;
+  --bg-meter:     #292929;
+  --spec-bg:      url('/themes/anansmart/picDisplay.png') no-repeat center / cover #363636;
+  --btn-inactive-img: url('/themes/anansmart/btn-inactive.png');
+  --btn-active-img: url('/themes/anansmart/btn-active.png');
+  --btn-active-tx-img: url('/themes/anansmart/btn-active-tx.png');
+  --slider-track-img: url('/themes/anansmart/slider-track.png');
+  --slider-thumb-img: url('/themes/anansmart/slider-thumb.png');
+
+  --line:         #6E7C88;
+  --line-soft:    #666D74;
+  --line-strong:  #768999;
+
+  --panel-head-top: #7C7B7C;
+  --panel-head-bot: #7C7B7C;
+  --panel-border:   #6E7C88;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #7C7B7C;
+  --panel-bot:      #7C7B7C;
+  --panel-edge:     #6E7C88;
+
+  --btn-top:        #8C8B8C;
+  --btn-bot:        #7C7B7C;
+  --btn-hl:         transparent;
+  --btn-edge:       #768999;
+  --btn-text:       #2A2A30;
+
+  --btn-active-top: #1E7FCC;
+  --btn-active-bot: #145385;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #0A0A0C;
+  --fg-1:         #2A2A30;
+  --fg-2:         #555560;
+
+  --accent:        #1E7FCC;
+  --accent-bright: #46A7F4;
+  --accent-soft:   rgba(30,127,204,0.12);
+  --accent-line:   rgba(30,127,204,0.45);
+
+  --tx:            #972D23;
+  --tx-soft:       rgba(151,45,35,0.18);
+
+  --vfo-led-color: #1E7FCC;
+  --vfo-led-glow:  rgba(30,127,204,0.5);
+  --vfo-led-dim:   rgba(30,127,204,0.1);
+}
+:root[data-theme="anansmart"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="anansmart"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="anansmart"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="anansmart"] body {
+  background-image: url('/themes/anansmart/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="xmas"] {
+  --bg-app:       #48120A;
+  --bg-workspace: #48120A;
+  --bg-0:         #48120A;
+  --bg-1:         #65190E;
+  --bg-2:         #822012;
+  --bg-3:         #9E2816;
+  --bg-inset:     #320D07;
+  --bg-meter:     #240905;
+  --spec-bg:      url('/themes/xmas/picDisplay.png') no-repeat center / cover #320D07;
+  --btn-inactive-img: url('/themes/xmas/btn-inactive.png');
+  --btn-active-img: url('/themes/xmas/btn-active.png');
+  --btn-active-tx-img: url('/themes/xmas/btn-active-tx.png');
+  --slider-track-img: url('/themes/xmas/slider-track.png');
+  --slider-thumb-img: url('/themes/xmas/slider-thumb.png');
+
+  --line:         #5E2D16;
+  --line-soft:    #471D0F;
+  --line-strong:  #733A1C;
+
+  --panel-head-top: #65190E;
+  --panel-head-bot: #65190E;
+  --panel-border:   #5E2D16;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #65190E;
+  --panel-bot:      #65190E;
+  --panel-edge:     #5E2D16;
+
+  --btn-top:        #822012;
+  --btn-bot:        #65190E;
+  --btn-hl:         transparent;
+  --btn-edge:       #733A1C;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #36A144;
+  --btn-active-bot: #23692C;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #36A144;
+  --accent-bright: #5EC96C;
+  --accent-soft:   rgba(54,161,68,0.12);
+  --accent-line:   rgba(54,161,68,0.45);
+
+  --tx:            #C0392B;
+  --tx-soft:       rgba(192,57,43,0.18);
+
+  --vfo-led-color: #36A144;
+  --vfo-led-glow:  rgba(54,161,68,0.5);
+  --vfo-led-dim:   rgba(54,161,68,0.1);
+}
+:root[data-theme="xmas"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="xmas"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="xmas"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="xmas"] body {
+  background-image: url('/themes/xmas/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="highvisual"] {
+  --bg-app:       #111111;
+  --bg-workspace: #111111;
+  --bg-0:         #111111;
+  --bg-1:         #181818;
+  --bg-2:         #1F1F1F;
+  --bg-3:         #252525;
+  --bg-inset:     #0C0C0C;
+  --bg-meter:     #080808;
+  --spec-bg:      url('/themes/highvisual/picDisplay.png') no-repeat center / cover #0C0C0C;
+  --btn-inactive-img: url('/themes/highvisual/btn-inactive.png');
+  --btn-active-img: url('/themes/highvisual/btn-active.png');
+  --btn-active-tx-img: url('/themes/highvisual/btn-active-tx.png');
+  --slider-track-img: url('/themes/highvisual/slider-track.png');
+  --slider-thumb-img: url('/themes/highvisual/slider-thumb.png');
+
+  --line:         #3B3514;
+  --line-soft:    #242110;
+  --line-strong:  #4C4419;
+
+  --panel-head-top: #181818;
+  --panel-head-bot: #181818;
+  --panel-border:   #3B3514;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #181818;
+  --panel-bot:      #181818;
+  --panel-edge:     #3B3514;
+
+  --btn-top:        #1F1F1F;
+  --btn-bot:        #181818;
+  --btn-hl:         transparent;
+  --btn-edge:       #4C4419;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #FFD700;
+  --btn-active-bot: #A68C00;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #FFD700;
+  --accent-bright: #FFFF28;
+  --accent-soft:   rgba(255,215,0,0.12);
+  --accent-line:   rgba(255,215,0,0.45);
+
+  --tx:            #FF2222;
+  --tx-soft:       rgba(255,34,34,0.18);
+
+  --vfo-led-color: #FFD700;
+  --vfo-led-glow:  rgba(255,215,0,0.5);
+  --vfo-led-dim:   rgba(255,215,0,0.1);
+}
+:root[data-theme="highvisual"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="highvisual"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="highvisual"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="highvisual"] body {
+  background-image: url('/themes/highvisual/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="ik3vig"] {
+  --bg-app:       #515151;
+  --bg-workspace: #515151;
+  --bg-0:         #515151;
+  --bg-1:         #656565;
+  --bg-2:         #7E7E7E;
+  --bg-3:         #969696;
+  --bg-inset:     #313131;
+  --bg-meter:     #242424;
+  --spec-bg:      url('/themes/ik3vig/picDisplay.png') no-repeat center / cover #313131;
+  --btn-inactive-img: url('/themes/ik3vig/btn-inactive.png');
+  --btn-active-img: url('/themes/ik3vig/btn-active.png');
+  --btn-active-tx-img: url('/themes/ik3vig/btn-active-tx.png');
+  --slider-track-img: url('/themes/ik3vig/slider-track.png');
+  --slider-thumb-img: url('/themes/ik3vig/slider-thumb.png');
+
+  --line:         #5F646E;
+  --line-soft:    #4F5257;
+  --line-strong:  #717785;
+
+  --panel-head-top: #656565;
+  --panel-head-bot: #656565;
+  --panel-border:   #5F646E;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #656565;
+  --panel-bot:      #656565;
+  --panel-edge:     #5F646E;
+
+  --btn-top:        #7E7E7E;
+  --btn-bot:        #656565;
+  --btn-hl:         transparent;
+  --btn-edge:       #717785;
+  --btn-text:       #2A2A30;
+
+  --btn-active-top: #3B5DA1;
+  --btn-active-bot: #2C4679;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #0A0A0C;
+  --fg-1:         #2A2A30;
+  --fg-2:         #555560;
+
+  --accent:        #3B5DA1;
+  --accent-bright: #6385C9;
+  --accent-soft:   rgba(59,93,161,0.12);
+  --accent-line:   rgba(59,93,161,0.45);
+
+  --tx:            #C62828;
+  --tx-soft:       rgba(198,40,40,0.18);
+
+  --vfo-led-color: #3B5DA1;
+  --vfo-led-glow:  rgba(59,93,161,0.5);
+  --vfo-led-dim:   rgba(59,93,161,0.1);
+}
+:root[data-theme="ik3vig"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="ik3vig"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="ik3vig"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="ik3vig"] body {
+  background-image: url('/themes/ik3vig/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="n2mdxhl2"] {
+  --bg-app:       #182F5F;
+  --bg-workspace: #182F5F;
+  --bg-0:         #182F5F;
+  --bg-1:         #224285;
+  --bg-2:         #2B55AB;
+  --bg-3:         #3567D1;
+  --bg-inset:     #112142;
+  --bg-meter:     #0C1830;
+  --spec-bg:      url('/themes/n2mdxhl2/picDisplay.png') no-repeat center / cover #112142;
+  --btn-inactive-img: url('/themes/n2mdxhl2/btn-inactive.png');
+  --btn-active-img: url('/themes/n2mdxhl2/btn-active.png');
+  --btn-active-tx-img: url('/themes/n2mdxhl2/btn-active-tx.png');
+  --slider-track-img: url('/themes/n2mdxhl2/slider-track.png');
+  --slider-thumb-img: url('/themes/n2mdxhl2/slider-thumb.png');
+
+  --line:         #264E97;
+  --line-soft:    #1B376C;
+  --line-strong:  #2E61BC;
+
+  --panel-head-top: #224285;
+  --panel-head-bot: #224285;
+  --panel-border:   #264E97;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #224285;
+  --panel-bot:      #224285;
+  --panel-edge:     #264E97;
+
+  --btn-top:        #2B55AB;
+  --btn-bot:        #224285;
+  --btn-hl:         transparent;
+  --btn-edge:       #2E61BC;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #3A8FFF;
+  --btn-active-bot: #265DA6;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #3A8FFF;
+  --accent-bright: #62B7FF;
+  --accent-soft:   rgba(58,143,255,0.12);
+  --accent-line:   rgba(58,143,255,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #3A8FFF;
+  --vfo-led-glow:  rgba(58,143,255,0.5);
+  --vfo-led-dim:   rgba(58,143,255,0.1);
+}
+:root[data-theme="n2mdxhl2"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="n2mdxhl2"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="n2mdxhl2"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="n2mdxhl2"] body {
+  background-image: url('/themes/n2mdxhl2/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="n2mdxmics"] {
+  --bg-app:       #454548;
+  --bg-workspace: #454548;
+  --bg-0:         #454548;
+  --bg-1:         #56565A;
+  --bg-2:         #6B6B70;
+  --bg-3:         #808085;
+  --bg-inset:     #29292B;
+  --bg-meter:     #1F1F20;
+  --spec-bg:      url('/themes/n2mdxmics/picDisplay.png') no-repeat center / cover #29292B;
+  --btn-inactive-img: url('/themes/n2mdxmics/btn-inactive.png');
+  --btn-active-img: url('/themes/n2mdxmics/btn-active.png');
+  --btn-active-tx-img: url('/themes/n2mdxmics/btn-active-tx.png');
+  --slider-track-img: url('/themes/n2mdxmics/slider-track.png');
+  --slider-thumb-img: url('/themes/n2mdxmics/slider-thumb.png');
+
+  --line:         #595F6B;
+  --line-soft:    #484B53;
+  --line-strong:  #6B7282;
+
+  --panel-head-top: #56565A;
+  --panel-head-bot: #56565A;
+  --panel-border:   #595F6B;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #56565A;
+  --panel-bot:      #56565A;
+  --panel-edge:     #595F6B;
+
+  --btn-top:        #6B6B70;
+  --btn-bot:        #56565A;
+  --btn-hl:         transparent;
+  --btn-edge:       #6B7282;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #6A90CC;
+  --btn-active-bot: #455E85;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #6A90CC;
+  --accent-bright: #92B8F4;
+  --accent-soft:   rgba(106,144,204,0.12);
+  --accent-line:   rgba(106,144,204,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #6A90CC;
+  --vfo-led-glow:  rgba(106,144,204,0.5);
+  --vfo-led-dim:   rgba(106,144,204,0.1);
+}
+:root[data-theme="n2mdxmics"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="n2mdxmics"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="n2mdxmics"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="n2mdxmics"] body {
+  background-image: url('/themes/n2mdxmics/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="rz1zr"] {
+  --bg-app:       #22262C;
+  --bg-workspace: #22262C;
+  --bg-0:         #22262C;
+  --bg-1:         #30353E;
+  --bg-2:         #3D444F;
+  --bg-3:         #4B5461;
+  --bg-inset:     #181B1F;
+  --bg-meter:     #111316;
+  --spec-bg:      url('/themes/rz1zr/picDisplay.png') no-repeat center / cover #181B1F;
+  --btn-inactive-img: url('/themes/rz1zr/btn-inactive.png');
+  --btn-active-img: url('/themes/rz1zr/btn-active.png');
+  --btn-active-tx-img: url('/themes/rz1zr/btn-active-tx.png');
+  --slider-track-img: url('/themes/rz1zr/slider-track.png');
+  --slider-thumb-img: url('/themes/rz1zr/slider-thumb.png');
+
+  --line:         #343E58;
+  --line-soft:    #252C3B;
+  --line-strong:  #404E6E;
+
+  --panel-head-top: #30353E;
+  --panel-head-bot: #30353E;
+  --panel-border:   #343E58;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #30353E;
+  --panel-bot:      #30353E;
+  --panel-edge:     #343E58;
+
+  --btn-top:        #3D444F;
+  --btn-bot:        #30353E;
+  --btn-hl:         transparent;
+  --btn-edge:       #404E6E;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #4A74E8;
+  --btn-active-bot: #304B97;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #4A74E8;
+  --accent-bright: #729CFF;
+  --accent-soft:   rgba(74,116,232,0.12);
+  --accent-line:   rgba(74,116,232,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #4A74E8;
+  --vfo-led-glow:  rgba(74,116,232,0.5);
+  --vfo-led-dim:   rgba(74,116,232,0.1);
+}
+:root[data-theme="rz1zr"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="rz1zr"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="rz1zr"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="rz1zr"] body {
+  background-image: url('/themes/rz1zr/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="alienpred"] {
+  --bg-app:       #22272B;
+  --bg-workspace: #22272B;
+  --bg-0:         #22272B;
+  --bg-1:         #30373C;
+  --bg-2:         #3D464D;
+  --bg-3:         #4B565F;
+  --bg-inset:     #181B1E;
+  --bg-meter:     #111416;
+  --spec-bg:      url('/themes/alienpred/picDisplay.png') no-repeat center / cover #181B1E;
+  --btn-inactive-img: url('/themes/alienpred/btn-inactive.png');
+  --btn-active-img: url('/themes/alienpred/btn-active.png');
+  --btn-active-tx-img: url('/themes/alienpred/btn-active-tx.png');
+  --slider-track-img: url('/themes/alienpred/slider-track.png');
+  --slider-thumb-img: url('/themes/alienpred/slider-thumb.png');
+
+  --line:         #34493F;
+  --line-soft:    #25322E;
+  --line-strong:  #405B4E;
+
+  --panel-head-top: #30373C;
+  --panel-head-bot: #30373C;
+  --panel-border:   #34493F;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #30373C;
+  --panel-bot:      #30373C;
+  --panel-edge:     #34493F;
+
+  --btn-top:        #3D464D;
+  --btn-bot:        #30373C;
+  --btn-hl:         transparent;
+  --btn-edge:       #405B4E;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #4CAF50;
+  --btn-active-bot: #317234;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #4CAF50;
+  --accent-bright: #74D778;
+  --accent-soft:   rgba(76,175,80,0.12);
+  --accent-line:   rgba(76,175,80,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #4CAF50;
+  --vfo-led-glow:  rgba(76,175,80,0.5);
+  --vfo-led-dim:   rgba(76,175,80,0.1);
+}
+:root[data-theme="alienpred"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="alienpred"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="alienpred"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="alienpred"] body {
+  background-image: url('/themes/alienpred/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="apache"] {
+  --bg-app:       #141416;
+  --bg-workspace: #141416;
+  --bg-0:         #141416;
+  --bg-1:         #1C1C1F;
+  --bg-2:         #242428;
+  --bg-3:         #2C2C30;
+  --bg-inset:     #0E0E0F;
+  --bg-meter:     #0A0A0B;
+  --spec-bg:      url('/themes/apache/picDisplay.png') no-repeat center / cover #0E0E0F;
+  --btn-inactive-img: url('/themes/apache/btn-inactive.png');
+  --btn-active-img: url('/themes/apache/btn-active.png');
+  --btn-active-tx-img: url('/themes/apache/btn-active-tx.png');
+  --slider-track-img: url('/themes/apache/slider-track.png');
+  --slider-thumb-img: url('/themes/apache/slider-thumb.png');
+
+  --line:         #2D2927;
+  --line-soft:    #1E1C1B;
+  --line-strong:  #393431;
+
+  --panel-head-top: #1C1C1F;
+  --panel-head-bot: #1C1C1F;
+  --panel-border:   #2D2927;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #1C1C1F;
+  --panel-bot:      #1C1C1F;
+  --panel-edge:     #2D2927;
+
+  --btn-top:        #242428;
+  --btn-bot:        #1C1C1F;
+  --btn-hl:         transparent;
+  --btn-edge:       #393431;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #8B7355;
+  --btn-active-bot: #5A4B37;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #8B7355;
+  --accent-bright: #B39B7D;
+  --accent-soft:   rgba(139,115,85,0.12);
+  --accent-line:   rgba(139,115,85,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #8B7355;
+  --vfo-led-glow:  rgba(139,115,85,0.5);
+  --vfo-led-dim:   rgba(139,115,85,0.1);
+}
+:root[data-theme="apache"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="apache"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="apache"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="apache"] body {
+  background-image: url('/themes/apache/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="circuit"] {
+  --bg-app:       #3D5249;
+  --bg-workspace: #3D5249;
+  --bg-0:         #3D5249;
+  --bg-1:         #4C665B;
+  --bg-2:         #5F7F71;
+  --bg-3:         #719887;
+  --bg-inset:     #25312C;
+  --bg-meter:     #1B2521;
+  --spec-bg:      url('/themes/circuit/picDisplay.png') no-repeat center / cover #25312C;
+  --btn-inactive-img: url('/themes/circuit/btn-inactive.png');
+  --btn-active-img: url('/themes/circuit/btn-active.png');
+  --btn-active-tx-img: url('/themes/circuit/btn-active-tx.png');
+  --slider-track-img: url('/themes/circuit/slider-track.png');
+  --slider-thumb-img: url('/themes/circuit/slider-thumb.png');
+
+  --line:         #497455;
+  --line-soft:    #3D5B47;
+  --line-strong:  #578D65;
+
+  --panel-head-top: #4C665B;
+  --panel-head-bot: #4C665B;
+  --panel-border:   #497455;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #4C665B;
+  --panel-bot:      #4C665B;
+  --panel-edge:     #497455;
+
+  --btn-top:        #5F7F71;
+  --btn-bot:        #4C665B;
+  --btn-hl:         transparent;
+  --btn-edge:       #578D65;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #39C436;
+  --btn-active-bot: #257F23;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #39C436;
+  --accent-bright: #61EC5E;
+  --accent-soft:   rgba(57,196,54,0.12);
+  --accent-line:   rgba(57,196,54,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #39C436;
+  --vfo-led-glow:  rgba(57,196,54,0.5);
+  --vfo-led-dim:   rgba(57,196,54,0.1);
+}
+:root[data-theme="circuit"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="circuit"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="circuit"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="circuit"] body {
+  background-image: url('/themes/circuit/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="joker"] {
+  --bg-app:       #403335;
+  --bg-workspace: #403335;
+  --bg-0:         #403335;
+  --bg-1:         #504042;
+  --bg-2:         #634F52;
+  --bg-3:         #765E62;
+  --bg-inset:     #261F20;
+  --bg-meter:     #1D1718;
+  --spec-bg:      url('/themes/joker/picDisplay.png') no-repeat center / cover #261F20;
+  --btn-inactive-img: url('/themes/joker/btn-inactive.png');
+  --btn-active-img: url('/themes/joker/btn-active.png');
+  --btn-active-tx-img: url('/themes/joker/btn-active-tx.png');
+  --slider-track-img: url('/themes/joker/slider-track.png');
+  --slider-thumb-img: url('/themes/joker/slider-thumb.png');
+
+  --line:         #6A5346;
+  --line-soft:    #4F3E38;
+  --line-strong:  #826554;
+
+  --panel-head-top: #504042;
+  --panel-head-bot: #504042;
+  --panel-border:   #6A5346;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #504042;
+  --panel-bot:      #504042;
+  --panel-edge:     #6A5346;
+
+  --btn-top:        #634F52;
+  --btn-bot:        #504042;
+  --btn-hl:         transparent;
+  --btn-edge:       #826554;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #FFBF5E;
+  --btn-active-bot: #A67C3D;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #FFBF5E;
+  --accent-bright: #FFE786;
+  --accent-soft:   rgba(255,191,94,0.12);
+  --accent-line:   rgba(255,191,94,0.45);
+
+  --tx:            #9B1B30;
+  --tx-soft:       rgba(155,27,48,0.18);
+
+  --vfo-led-color: #FFBF5E;
+  --vfo-led-glow:  rgba(255,191,94,0.5);
+  --vfo-led-dim:   rgba(255,191,94,0.1);
+}
+:root[data-theme="joker"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="joker"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="joker"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="joker"] body {
+  background-image: url('/themes/joker/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="kiss"] {
+  --bg-app:       #0A0A0A;
+  --bg-workspace: #0A0A0A;
+  --bg-0:         #0A0A0A;
+  --bg-1:         #161616;
+  --bg-2:         #202020;
+  --bg-3:         #2A2A2A;
+  --bg-inset:     #0A0A0A;
+  --bg-meter:     #0A0A0A;
+  --spec-bg:      url('/themes/kiss/picDisplay.png') no-repeat center / cover #0A0A0A;
+  --btn-inactive-img: url('/themes/kiss/btn-inactive.png');
+  --btn-active-img: url('/themes/kiss/btn-active.png');
+  --btn-active-tx-img: url('/themes/kiss/btn-active-tx.png');
+  --slider-track-img: url('/themes/kiss/slider-track.png');
+  --slider-thumb-img: url('/themes/kiss/slider-thumb.png');
+
+  --line:         #311313;
+  --line-soft:    #1A0909;
+  --line-strong:  #421A1A;
+
+  --panel-head-top: #161616;
+  --panel-head-bot: #161616;
+  --panel-border:   #311313;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #161616;
+  --panel-bot:      #161616;
+  --panel-edge:     #311313;
+
+  --btn-top:        #202020;
+  --btn-bot:        #161616;
+  --btn-hl:         transparent;
+  --btn-edge:       #421A1A;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #CC0000;
+  --btn-active-bot: #990000;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #CC0000;
+  --accent-bright: #F42828;
+  --accent-soft:   rgba(204,0,0,0.12);
+  --accent-line:   rgba(204,0,0,0.45);
+
+  --tx:            #CC0000;
+  --tx-soft:       rgba(204,0,0,0.18);
+
+  --vfo-led-color: #CC0000;
+  --vfo-led-glow:  rgba(204,0,0,0.5);
+  --vfo-led-dim:   rgba(204,0,0,0.1);
+}
+:root[data-theme="kiss"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="kiss"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="kiss"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="kiss"] body {
+  background-image: url('/themes/kiss/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="kiss2"] {
+  --bg-app:       #161616;
+  --bg-workspace: #161616;
+  --bg-0:         #161616;
+  --bg-1:         #1F1F1F;
+  --bg-2:         #282828;
+  --bg-3:         #303030;
+  --bg-inset:     #0F0F0F;
+  --bg-meter:     #0B0B0B;
+  --spec-bg:      url('/themes/kiss2/picDisplay.png') no-repeat center / cover #0F0F0F;
+  --btn-inactive-img: url('/themes/kiss2/btn-inactive.png');
+  --btn-active-img: url('/themes/kiss2/btn-active.png');
+  --btn-active-tx-img: url('/themes/kiss2/btn-active-tx.png');
+  --slider-track-img: url('/themes/kiss2/slider-track.png');
+  --slider-thumb-img: url('/themes/kiss2/slider-thumb.png');
+
+  --line:         #391F1A;
+  --line-soft:    #251714;
+  --line-strong:  #492720;
+
+  --panel-head-top: #1F1F1F;
+  --panel-head-bot: #1F1F1F;
+  --panel-border:   #391F1A;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #1F1F1F;
+  --panel-bot:      #1F1F1F;
+  --panel-edge:     #391F1A;
+
+  --btn-top:        #282828;
+  --btn-bot:        #1F1F1F;
+  --btn-hl:         transparent;
+  --btn-edge:       #492720;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #CC2200;
+  --btn-active-bot: #991A00;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #CC2200;
+  --accent-bright: #F44A28;
+  --accent-soft:   rgba(204,34,0,0.12);
+  --accent-line:   rgba(204,34,0,0.45);
+
+  --tx:            #CC0000;
+  --tx-soft:       rgba(204,0,0,0.18);
+
+  --vfo-led-color: #CC2200;
+  --vfo-led-glow:  rgba(204,34,0,0.5);
+  --vfo-led-dim:   rgba(204,34,0,0.1);
+}
+:root[data-theme="kiss2"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="kiss2"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="kiss2"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="kiss2"] body {
+  background-image: url('/themes/kiss2/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="ledzep"] {
+  --bg-app:       #2E2E2E;
+  --bg-workspace: #2E2E2E;
+  --bg-0:         #2E2E2E;
+  --bg-1:         #404040;
+  --bg-2:         #535353;
+  --bg-3:         #656565;
+  --bg-inset:     #202020;
+  --bg-meter:     #171717;
+  --spec-bg:      url('/themes/ledzep/picDisplay.png') no-repeat center / cover #202020;
+  --btn-inactive-img: url('/themes/ledzep/btn-inactive.png');
+  --btn-active-img: url('/themes/ledzep/btn-active.png');
+  --btn-active-tx-img: url('/themes/ledzep/btn-active-tx.png');
+  --slider-track-img: url('/themes/ledzep/slider-track.png');
+  --slider-thumb-img: url('/themes/ledzep/slider-thumb.png');
+
+  --line:         #564836;
+  --line-soft:    #3B342A;
+  --line-strong:  #6C5A42;
+
+  --panel-head-top: #404040;
+  --panel-head-bot: #404040;
+  --panel-border:   #564836;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #404040;
+  --panel-bot:      #404040;
+  --panel-edge:     #564836;
+
+  --btn-top:        #535353;
+  --btn-bot:        #404040;
+  --btn-hl:         transparent;
+  --btn-edge:       #6C5A42;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #D27500;
+  --btn-active-bot: #884C00;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #D27500;
+  --accent-bright: #FA9D28;
+  --accent-soft:   rgba(210,117,0,0.12);
+  --accent-line:   rgba(210,117,0,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #D27500;
+  --vfo-led-glow:  rgba(210,117,0,0.5);
+  --vfo-led-dim:   rgba(210,117,0,0.1);
+}
+:root[data-theme="ledzep"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="ledzep"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="ledzep"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="ledzep"] body {
+  background-image: url('/themes/ledzep/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="maiden"] {
+  --bg-app:       #4D4138;
+  --bg-workspace: #4D4138;
+  --bg-0:         #4D4138;
+  --bg-1:         #605146;
+  --bg-2:         #776557;
+  --bg-3:         #8E7868;
+  --bg-inset:     #2E2722;
+  --bg-meter:     #231D19;
+  --spec-bg:      url('/themes/maiden/picDisplay.png') no-repeat center / cover #2E2722;
+  --btn-inactive-img: url('/themes/maiden/btn-inactive.png');
+  --btn-active-img: url('/themes/maiden/btn-active.png');
+  --btn-active-tx-img: url('/themes/maiden/btn-active-tx.png');
+  --slider-track-img: url('/themes/maiden/slider-track.png');
+  --slider-thumb-img: url('/themes/maiden/slider-thumb.png');
+
+  --line:         #785542;
+  --line-soft:    #5B4437;
+  --line-strong:  #92664E;
+
+  --panel-head-top: #605146;
+  --panel-head-bot: #605146;
+  --panel-border:   #785542;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #605146;
+  --panel-bot:      #605146;
+  --panel-edge:     #785542;
+
+  --btn-top:        #776557;
+  --btn-bot:        #605146;
+  --btn-hl:         transparent;
+  --btn-edge:       #92664E;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #FF6B2B;
+  --btn-active-bot: #A6461C;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #FF6B2B;
+  --accent-bright: #FF9353;
+  --accent-soft:   rgba(255,107,43,0.12);
+  --accent-line:   rgba(255,107,43,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #FF6B2B;
+  --vfo-led-glow:  rgba(255,107,43,0.5);
+  --vfo-led-dim:   rgba(255,107,43,0.1);
+}
+:root[data-theme="maiden"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="maiden"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="maiden"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="maiden"] body {
+  background-image: url('/themes/maiden/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="metallica"] {
+  --bg-app:       #252525;
+  --bg-workspace: #252525;
+  --bg-0:         #252525;
+  --bg-1:         #343434;
+  --bg-2:         #434343;
+  --bg-3:         #515151;
+  --bg-inset:     #1A1A1A;
+  --bg-meter:     #121212;
+  --spec-bg:      url('/themes/metallica/picDisplay.png') no-repeat center / cover #1A1A1A;
+  --btn-inactive-img: url('/themes/metallica/btn-inactive.png');
+  --btn-active-img: url('/themes/metallica/btn-active.png');
+  --btn-active-tx-img: url('/themes/metallica/btn-active-tx.png');
+  --slider-track-img: url('/themes/metallica/slider-track.png');
+  --slider-thumb-img: url('/themes/metallica/slider-thumb.png');
+
+  --line:         #494949;
+  --line-soft:    #313131;
+  --line-strong:  #5C5C5C;
+
+  --panel-head-top: #343434;
+  --panel-head-bot: #343434;
+  --panel-border:   #494949;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #343434;
+  --panel-bot:      #343434;
+  --panel-edge:     #494949;
+
+  --btn-top:        #434343;
+  --btn-bot:        #343434;
+  --btn-hl:         transparent;
+  --btn-edge:       #5C5C5C;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #C0C0C0;
+  --btn-active-bot: #7D7D7D;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #C0C0C0;
+  --accent-bright: #E8E8E8;
+  --accent-soft:   rgba(192,192,192,0.12);
+  --accent-line:   rgba(192,192,192,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #C0C0C0;
+  --vfo-led-glow:  rgba(192,192,192,0.5);
+  --vfo-led-dim:   rgba(192,192,192,0.1);
+}
+:root[data-theme="metallica"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="metallica"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="metallica"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="metallica"] body {
+  background-image: url('/themes/metallica/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="nascar"] {
+  --bg-app:       #3D3820;
+  --bg-workspace: #3D3820;
+  --bg-0:         #3D3820;
+  --bg-1:         #4C4628;
+  --bg-2:         #5F5732;
+  --bg-3:         #71683B;
+  --bg-inset:     #252213;
+  --bg-meter:     #1B190E;
+  --spec-bg:      url('/themes/nascar/picDisplay.png') no-repeat center / cover #252213;
+  --btn-inactive-img: url('/themes/nascar/btn-inactive.png');
+  --btn-active-img: url('/themes/nascar/btn-active.png');
+  --btn-active-tx-img: url('/themes/nascar/btn-active-tx.png');
+  --slider-track-img: url('/themes/nascar/slider-track.png');
+  --slider-thumb-img: url('/themes/nascar/slider-thumb.png');
+
+  --line:         #635D24;
+  --line-soft:    #4B451F;
+  --line-strong:  #7A722B;
+
+  --panel-head-top: #4C4628;
+  --panel-head-bot: #4C4628;
+  --panel-border:   #635D24;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #4C4628;
+  --panel-bot:      #4C4628;
+  --panel-edge:     #635D24;
+
+  --btn-top:        #5F5732;
+  --btn-bot:        #4C4628;
+  --btn-hl:         transparent;
+  --btn-edge:       #7A722B;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #E7DF0E;
+  --btn-active-bot: #969109;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #E7DF0E;
+  --accent-bright: #FFFF36;
+  --accent-soft:   rgba(231,223,14,0.12);
+  --accent-line:   rgba(231,223,14,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #E7DF0E;
+  --vfo-led-glow:  rgba(231,223,14,0.5);
+  --vfo-led-dim:   rgba(231,223,14,0.1);
+}
+:root[data-theme="nascar"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="nascar"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="nascar"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="nascar"] body {
+  background-image: url('/themes/nascar/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="riddler"] {
+  --bg-app:       #02200D;
+  --bg-workspace: #02200D;
+  --bg-0:         #02200D;
+  --bg-1:         #032D12;
+  --bg-2:         #043A17;
+  --bg-3:         #04461D;
+  --bg-inset:     #011609;
+  --bg-meter:     #011006;
+  --spec-bg:      url('/themes/riddler/picDisplay.png') no-repeat center / cover #011609;
+  --btn-inactive-img: url('/themes/riddler/btn-inactive.png');
+  --btn-active-img: url('/themes/riddler/btn-active.png');
+  --btn-active-tx-img: url('/themes/riddler/btn-active-tx.png');
+  --slider-track-img: url('/themes/riddler/slider-track.png');
+  --slider-thumb-img: url('/themes/riddler/slider-thumb.png');
+
+  --line:         #034110;
+  --line-soft:    #022C0C;
+  --line-strong:  #035313;
+
+  --panel-head-top: #032D12;
+  --panel-head-bot: #032D12;
+  --panel-border:   #034110;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #032D12;
+  --panel-bot:      #032D12;
+  --panel-edge:     #034110;
+
+  --btn-top:        #043A17;
+  --btn-bot:        #032D12;
+  --btn-hl:         transparent;
+  --btn-edge:       #035313;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #00B503;
+  --btn-active-bot: #007602;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #00B503;
+  --accent-bright: #28DD2B;
+  --accent-soft:   rgba(0,181,3,0.12);
+  --accent-line:   rgba(0,181,3,0.45);
+
+  --tx:            #9B1B30;
+  --tx-soft:       rgba(155,27,48,0.18);
+
+  --vfo-led-color: #00B503;
+  --vfo-led-glow:  rgba(0,181,3,0.5);
+  --vfo-led-dim:   rgba(0,181,3,0.1);
+}
+:root[data-theme="riddler"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="riddler"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="riddler"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="riddler"] body {
+  background-image: url('/themes/riddler/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="n2mdxst"] {
+  --bg-app:       #2F282D;
+  --bg-workspace: #2F282D;
+  --bg-0:         #2F282D;
+  --bg-1:         #42383F;
+  --bg-2:         #554851;
+  --bg-3:         #675863;
+  --bg-inset:     #211C1F;
+  --bg-meter:     #181416;
+  --spec-bg:      url('/themes/n2mdxst/picDisplay.png') no-repeat center / cover #211C1F;
+  --btn-inactive-img: url('/themes/n2mdxst/btn-inactive.png');
+  --btn-active-img: url('/themes/n2mdxst/btn-active.png');
+  --btn-active-tx-img: url('/themes/n2mdxst/btn-active-tx.png');
+  --slider-track-img: url('/themes/n2mdxst/slider-track.png');
+  --slider-thumb-img: url('/themes/n2mdxst/slider-thumb.png');
+
+  --line:         #573F36;
+  --line-soft:    #3C2D29;
+  --line-strong:  #6D4E41;
+
+  --panel-head-top: #42383F;
+  --panel-head-bot: #42383F;
+  --panel-border:   #573F36;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #42383F;
+  --panel-bot:      #42383F;
+  --panel-edge:     #573F36;
+
+  --btn-top:        #554851;
+  --btn-bot:        #42383F;
+  --btn-hl:         transparent;
+  --btn-edge:       #6D4E41;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #CC6600;
+  --btn-active-bot: #854200;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #CC6600;
+  --accent-bright: #F48E28;
+  --accent-soft:   rgba(204,102,0,0.12);
+  --accent-line:   rgba(204,102,0,0.45);
+
+  --tx:            #D41C1C;
+  --tx-soft:       rgba(212,28,28,0.18);
+
+  --vfo-led-color: #CC6600;
+  --vfo-led-glow:  rgba(204,102,0,0.5);
+  --vfo-led-dim:   rgba(204,102,0,0.1);
+}
+:root[data-theme="n2mdxst"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="n2mdxst"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="n2mdxst"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="n2mdxst"] body {
+  background-image: url('/themes/n2mdxst/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="starwars"] {
+  --bg-app:       #050608;
+  --bg-workspace: #050608;
+  --bg-0:         #050608;
+  --bg-1:         #111214;
+  --bg-2:         #1B1C1E;
+  --bg-3:         #252628;
+  --bg-inset:     #050608;
+  --bg-meter:     #050608;
+  --spec-bg:      url('/themes/starwars/picDisplay.png') no-repeat center / cover #050608;
+  --btn-inactive-img: url('/themes/starwars/btn-inactive.png');
+  --btn-active-img: url('/themes/starwars/btn-active.png');
+  --btn-active-tx-img: url('/themes/starwars/btn-active-tx.png');
+  --slider-track-img: url('/themes/starwars/slider-track.png');
+  --slider-thumb-img: url('/themes/starwars/slider-thumb.png');
+
+  --line:         #232C34;
+  --line-soft:    #10151A;
+  --line-strong:  #313C46;
+
+  --panel-head-top: #111214;
+  --panel-head-bot: #111214;
+  --panel-border:   #232C34;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #111214;
+  --panel-bot:      #111214;
+  --panel-edge:     #232C34;
+
+  --btn-top:        #1B1C1E;
+  --btn-bot:        #111214;
+  --btn-hl:         transparent;
+  --btn-edge:       #313C46;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #8ABEE6;
+  --btn-active-bot: #5A7C96;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #8ABEE6;
+  --accent-bright: #B2E6FF;
+  --accent-soft:   rgba(138,190,230,0.12);
+  --accent-line:   rgba(138,190,230,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #8ABEE6;
+  --vfo-led-glow:  rgba(138,190,230,0.5);
+  --vfo-led-dim:   rgba(138,190,230,0.1);
+}
+:root[data-theme="starwars"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="starwars"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="starwars"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="starwars"] body {
+  background-image: url('/themes/starwars/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="terminator"] {
+  --bg-app:       #0C0D1B;
+  --bg-workspace: #0C0D1B;
+  --bg-0:         #0C0D1B;
+  --bg-1:         #111226;
+  --bg-2:         #161731;
+  --bg-3:         #1A1D3B;
+  --bg-inset:     #080913;
+  --bg-meter:     #06060E;
+  --spec-bg:      url('/themes/terminator/picDisplay.png') no-repeat center / cover #080913;
+  --btn-inactive-img: url('/themes/terminator/btn-inactive.png');
+  --btn-active-img: url('/themes/terminator/btn-active.png');
+  --btn-active-tx-img: url('/themes/terminator/btn-active-tx.png');
+  --slider-track-img: url('/themes/terminator/slider-track.png');
+  --slider-thumb-img: url('/themes/terminator/slider-thumb.png');
+
+  --line:         #351420;
+  --line-soft:    #1F0F19;
+  --line-strong:  #451927;
+
+  --panel-head-top: #111226;
+  --panel-head-bot: #111226;
+  --panel-border:   #351420;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #111226;
+  --panel-bot:      #111226;
+  --panel-edge:     #351420;
+
+  --btn-top:        #161731;
+  --btn-bot:        #111226;
+  --btn-hl:         transparent;
+  --btn-edge:       #451927;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #FF2200;
+  --btn-active-bot: #BF1A00;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #FF2200;
+  --accent-bright: #FF4A28;
+  --accent-soft:   rgba(255,34,0,0.12);
+  --accent-line:   rgba(255,34,0,0.45);
+
+  --tx:            #FF2200;
+  --tx-soft:       rgba(255,34,0,0.18);
+
+  --vfo-led-color: #FF2200;
+  --vfo-led-glow:  rgba(255,34,0,0.5);
+  --vfo-led-dim:   rgba(255,34,0,0.1);
+}
+:root[data-theme="terminator"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="terminator"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="terminator"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="terminator"] body {
+  background-image: url('/themes/terminator/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="tron"] {
+  --bg-app:       #1E3638;
+  --bg-workspace: #1E3638;
+  --bg-0:         #1E3638;
+  --bg-1:         #2A4C4E;
+  --bg-2:         #366165;
+  --bg-3:         #42777B;
+  --bg-inset:     #152627;
+  --bg-meter:     #0F1B1C;
+  --spec-bg:      url('/themes/tron/picDisplay.png') no-repeat center / cover #152627;
+  --btn-inactive-img: url('/themes/tron/btn-inactive.png');
+  --btn-active-img: url('/themes/tron/btn-active.png');
+  --btn-active-tx-img: url('/themes/tron/btn-active-tx.png');
+  --slider-track-img: url('/themes/tron/slider-track.png');
+  --slider-thumb-img: url('/themes/tron/slider-thumb.png');
+
+  --line:         #386469;
+  --line-soft:    #264448;
+  --line-strong:  #467D84;
+
+  --panel-head-top: #2A4C4E;
+  --panel-head-bot: #2A4C4E;
+  --panel-border:   #386469;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #2A4C4E;
+  --panel-bot:      #2A4C4E;
+  --panel-edge:     #386469;
+
+  --btn-top:        #366165;
+  --btn-bot:        #2A4C4E;
+  --btn-hl:         transparent;
+  --btn-edge:       #467D84;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #87EBFF;
+  --btn-active-bot: #5899A6;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #87EBFF;
+  --accent-bright: #AFFFFF;
+  --accent-soft:   rgba(135,235,255,0.12);
+  --accent-line:   rgba(135,235,255,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #87EBFF;
+  --vfo-led-glow:  rgba(135,235,255,0.5);
+  --vfo-led-dim:   rgba(135,235,255,0.1);
+}
+:root[data-theme="tron"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="tron"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="tron"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="tron"] body {
+  background-image: url('/themes/tron/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="warriors"] {
+  --bg-app:       #5A4A35;
+  --bg-workspace: #5A4A35;
+  --bg-0:         #5A4A35;
+  --bg-1:         #705C42;
+  --bg-2:         #8C7352;
+  --bg-3:         #A68962;
+  --bg-inset:     #362C20;
+  --bg-meter:     #282118;
+  --spec-bg:      url('/themes/warriors/picDisplay.png') no-repeat center / cover #362C20;
+  --btn-inactive-img: url('/themes/warriors/btn-inactive.png');
+  --btn-active-img: url('/themes/warriors/btn-active.png');
+  --btn-active-tx-img: url('/themes/warriors/btn-active-tx.png');
+  --slider-track-img: url('/themes/warriors/slider-track.png');
+  --slider-thumb-img: url('/themes/warriors/slider-thumb.png');
+
+  --line:         #855E38;
+  --line-soft:    #674D31;
+  --line-strong:  #A37142;
+
+  --panel-head-top: #705C42;
+  --panel-head-bot: #705C42;
+  --panel-border:   #855E38;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #705C42;
+  --panel-bot:      #705C42;
+  --panel-edge:     #855E38;
+
+  --btn-top:        #8C7352;
+  --btn-bot:        #705C42;
+  --btn-hl:         transparent;
+  --btn-edge:       #A37142;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #FF6B00;
+  --btn-active-bot: #A64600;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #FF6B00;
+  --accent-bright: #FF9328;
+  --accent-soft:   rgba(255,107,0,0.12);
+  --accent-line:   rgba(255,107,0,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #FF6B00;
+  --vfo-led-glow:  rgba(255,107,0,0.5);
+  --vfo-led-dim:   rgba(255,107,0,0.1);
+}
+:root[data-theme="warriors"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="warriors"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="warriors"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="warriors"] body {
+  background-image: url('/themes/warriors/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+:root[data-theme="worldmaps"] {
+  --bg-app:       #050810;
+  --bg-workspace: #050810;
+  --bg-0:         #050810;
+  --bg-1:         #11141C;
+  --bg-2:         #1B1E26;
+  --bg-3:         #252830;
+  --bg-inset:     #050810;
+  --bg-meter:     #050810;
+  --spec-bg:      url('/themes/worldmaps/picDisplay.png') no-repeat center / cover #050810;
+  --btn-inactive-img: url('/themes/worldmaps/btn-inactive.png');
+  --btn-active-img: url('/themes/worldmaps/btn-active.png');
+  --btn-active-tx-img: url('/themes/worldmaps/btn-active-tx.png');
+  --slider-track-img: url('/themes/worldmaps/slider-track.png');
+  --slider-thumb-img: url('/themes/worldmaps/slider-thumb.png');
+
+  --line:         #1A2738;
+  --line-soft:    #0B1320;
+  --line-strong:  #24354A;
+
+  --panel-head-top: #11141C;
+  --panel-head-bot: #11141C;
+  --panel-border:   #1A2738;
+  --panel-hl-top:   rgba(255,255,255,0.04);
+  --panel-top:      #11141C;
+  --panel-bot:      #11141C;
+  --panel-edge:     #1A2738;
+
+  --btn-top:        #1B1E26;
+  --btn-bot:        #11141C;
+  --btn-hl:         transparent;
+  --btn-edge:       #24354A;
+  --btn-text:       #CCCCCC;
+
+  --btn-active-top: #4A90D9;
+  --btn-active-bot: #305E8D;
+  --btn-active-text:#ffffff;
+
+  --fg-0:         #FFFFFF;
+  --fg-1:         #CCCCCC;
+  --fg-2:         #8A8A90;
+
+  --accent:        #4A90D9;
+  --accent-bright: #72B8FF;
+  --accent-soft:   rgba(74,144,217,0.12);
+  --accent-line:   rgba(74,144,217,0.45);
+
+  --tx:            #E63A2B;
+  --tx-soft:       rgba(230,58,43,0.18);
+
+  --vfo-led-color: #4A90D9;
+  --vfo-led-glow:  rgba(74,144,217,0.5);
+  --vfo-led-dim:   rgba(74,144,217,0.1);
+}
+:root[data-theme="worldmaps"] .freq-digits { color: var(--vfo-led-color) !important; }
+:root[data-theme="worldmaps"] .freq-digits .digit.leading { color: var(--vfo-led-dim) !important; }
+:root[data-theme="worldmaps"] .freq-digits .sep { color: var(--vfo-led-dim) !important; }
+:root[data-theme="worldmaps"] body {
+  background-image: url('/themes/worldmaps/Console.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
 /* ===========================================================
    Base resets
    =========================================================== */
@@ -1283,6 +2797,30 @@ input[type="range"]::-moz-range-thumb {
 :root[data-theme="openhpsdrgray"] .btn,
 :root[data-theme="yaesu"] .btn,
 :root[data-theme="matrix"] .btn,
+:root[data-theme="anansmart"] .btn,
+:root[data-theme="xmas"] .btn,
+:root[data-theme="highvisual"] .btn,
+:root[data-theme="ik3vig"] .btn,
+:root[data-theme="n2mdxhl2"] .btn,
+:root[data-theme="n2mdxmics"] .btn,
+:root[data-theme="rz1zr"] .btn,
+:root[data-theme="alienpred"] .btn,
+:root[data-theme="apache"] .btn,
+:root[data-theme="circuit"] .btn,
+:root[data-theme="joker"] .btn,
+:root[data-theme="kiss"] .btn,
+:root[data-theme="kiss2"] .btn,
+:root[data-theme="ledzep"] .btn,
+:root[data-theme="maiden"] .btn,
+:root[data-theme="metallica"] .btn,
+:root[data-theme="nascar"] .btn,
+:root[data-theme="riddler"] .btn,
+:root[data-theme="n2mdxst"] .btn,
+:root[data-theme="starwars"] .btn,
+:root[data-theme="terminator"] .btn,
+:root[data-theme="tron"] .btn,
+:root[data-theme="warriors"] .btn,
+:root[data-theme="worldmaps"] .btn,
 :root[data-theme="startrek"] .btn {
   background-image: var(--btn-inactive-img) !important;
   background-size: 100% 100% !important;
@@ -1301,6 +2839,30 @@ input[type="range"]::-moz-range-thumb {
 :root[data-theme="openhpsdrgray"] .btn:hover,
 :root[data-theme="yaesu"] .btn:hover,
 :root[data-theme="matrix"] .btn:hover,
+:root[data-theme="anansmart"] .btn:hover,
+:root[data-theme="xmas"] .btn:hover,
+:root[data-theme="highvisual"] .btn:hover,
+:root[data-theme="ik3vig"] .btn:hover,
+:root[data-theme="n2mdxhl2"] .btn:hover,
+:root[data-theme="n2mdxmics"] .btn:hover,
+:root[data-theme="rz1zr"] .btn:hover,
+:root[data-theme="alienpred"] .btn:hover,
+:root[data-theme="apache"] .btn:hover,
+:root[data-theme="circuit"] .btn:hover,
+:root[data-theme="joker"] .btn:hover,
+:root[data-theme="kiss"] .btn:hover,
+:root[data-theme="kiss2"] .btn:hover,
+:root[data-theme="ledzep"] .btn:hover,
+:root[data-theme="maiden"] .btn:hover,
+:root[data-theme="metallica"] .btn:hover,
+:root[data-theme="nascar"] .btn:hover,
+:root[data-theme="riddler"] .btn:hover,
+:root[data-theme="n2mdxst"] .btn:hover,
+:root[data-theme="starwars"] .btn:hover,
+:root[data-theme="terminator"] .btn:hover,
+:root[data-theme="tron"] .btn:hover,
+:root[data-theme="warriors"] .btn:hover,
+:root[data-theme="worldmaps"] .btn:hover,
 :root[data-theme="startrek"] .btn:hover {
   filter: brightness(1.2) !important;
 }
@@ -1313,6 +2875,30 @@ input[type="range"]::-moz-range-thumb {
 :root[data-theme="openhpsdrgray"] .btn.active,
 :root[data-theme="yaesu"] .btn.active,
 :root[data-theme="matrix"] .btn.active,
+:root[data-theme="anansmart"] .btn.active,
+:root[data-theme="xmas"] .btn.active,
+:root[data-theme="highvisual"] .btn.active,
+:root[data-theme="ik3vig"] .btn.active,
+:root[data-theme="n2mdxhl2"] .btn.active,
+:root[data-theme="n2mdxmics"] .btn.active,
+:root[data-theme="rz1zr"] .btn.active,
+:root[data-theme="alienpred"] .btn.active,
+:root[data-theme="apache"] .btn.active,
+:root[data-theme="circuit"] .btn.active,
+:root[data-theme="joker"] .btn.active,
+:root[data-theme="kiss"] .btn.active,
+:root[data-theme="kiss2"] .btn.active,
+:root[data-theme="ledzep"] .btn.active,
+:root[data-theme="maiden"] .btn.active,
+:root[data-theme="metallica"] .btn.active,
+:root[data-theme="nascar"] .btn.active,
+:root[data-theme="riddler"] .btn.active,
+:root[data-theme="n2mdxst"] .btn.active,
+:root[data-theme="starwars"] .btn.active,
+:root[data-theme="terminator"] .btn.active,
+:root[data-theme="tron"] .btn.active,
+:root[data-theme="warriors"] .btn.active,
+:root[data-theme="worldmaps"] .btn.active,
 :root[data-theme="startrek"] .btn.active {
   background-image: var(--btn-active-img) !important;
   box-shadow: 0 0 8px var(--accent-line) !important;
@@ -1335,6 +2921,54 @@ input[type="range"]::-moz-range-thumb {
 :root[data-theme="matrix"] .btn.tx.active,
 :root[data-theme="matrix"] .btn.tx-btn.tx,
 :root[data-theme="startrek"] .btn.tx.active,
+:root[data-theme="anansmart"] .btn.tx.active,
+:root[data-theme="anansmart"] .btn.tx-btn.tx,
+:root[data-theme="xmas"] .btn.tx.active,
+:root[data-theme="xmas"] .btn.tx-btn.tx,
+:root[data-theme="highvisual"] .btn.tx.active,
+:root[data-theme="highvisual"] .btn.tx-btn.tx,
+:root[data-theme="ik3vig"] .btn.tx.active,
+:root[data-theme="ik3vig"] .btn.tx-btn.tx,
+:root[data-theme="n2mdxhl2"] .btn.tx.active,
+:root[data-theme="n2mdxhl2"] .btn.tx-btn.tx,
+:root[data-theme="n2mdxmics"] .btn.tx.active,
+:root[data-theme="n2mdxmics"] .btn.tx-btn.tx,
+:root[data-theme="rz1zr"] .btn.tx.active,
+:root[data-theme="rz1zr"] .btn.tx-btn.tx,
+:root[data-theme="alienpred"] .btn.tx.active,
+:root[data-theme="alienpred"] .btn.tx-btn.tx,
+:root[data-theme="apache"] .btn.tx.active,
+:root[data-theme="apache"] .btn.tx-btn.tx,
+:root[data-theme="circuit"] .btn.tx.active,
+:root[data-theme="circuit"] .btn.tx-btn.tx,
+:root[data-theme="joker"] .btn.tx.active,
+:root[data-theme="joker"] .btn.tx-btn.tx,
+:root[data-theme="kiss"] .btn.tx.active,
+:root[data-theme="kiss"] .btn.tx-btn.tx,
+:root[data-theme="kiss2"] .btn.tx.active,
+:root[data-theme="kiss2"] .btn.tx-btn.tx,
+:root[data-theme="ledzep"] .btn.tx.active,
+:root[data-theme="ledzep"] .btn.tx-btn.tx,
+:root[data-theme="maiden"] .btn.tx.active,
+:root[data-theme="maiden"] .btn.tx-btn.tx,
+:root[data-theme="metallica"] .btn.tx.active,
+:root[data-theme="metallica"] .btn.tx-btn.tx,
+:root[data-theme="nascar"] .btn.tx.active,
+:root[data-theme="nascar"] .btn.tx-btn.tx,
+:root[data-theme="riddler"] .btn.tx.active,
+:root[data-theme="riddler"] .btn.tx-btn.tx,
+:root[data-theme="n2mdxst"] .btn.tx.active,
+:root[data-theme="n2mdxst"] .btn.tx-btn.tx,
+:root[data-theme="starwars"] .btn.tx.active,
+:root[data-theme="starwars"] .btn.tx-btn.tx,
+:root[data-theme="terminator"] .btn.tx.active,
+:root[data-theme="terminator"] .btn.tx-btn.tx,
+:root[data-theme="tron"] .btn.tx.active,
+:root[data-theme="tron"] .btn.tx-btn.tx,
+:root[data-theme="warriors"] .btn.tx.active,
+:root[data-theme="warriors"] .btn.tx-btn.tx,
+:root[data-theme="worldmaps"] .btn.tx.active,
+:root[data-theme="worldmaps"] .btn.tx-btn.tx,
 :root[data-theme="startrek"] .btn.tx-btn.tx {
   background-image: var(--btn-active-tx-img) !important;
   box-shadow: 0 0 10px rgba(255, 74, 89, 0.4) !important;
@@ -1349,6 +2983,30 @@ input[type="range"]::-moz-range-thumb {
 :root[data-theme="openhpsdrgray"] input[type="range"]::-webkit-slider-runnable-track,
 :root[data-theme="yaesu"] input[type="range"]::-webkit-slider-runnable-track,
 :root[data-theme="matrix"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="anansmart"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="xmas"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="highvisual"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="ik3vig"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="n2mdxhl2"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="n2mdxmics"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="rz1zr"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="alienpred"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="apache"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="circuit"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="joker"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="kiss"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="kiss2"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="ledzep"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="maiden"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="metallica"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="nascar"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="riddler"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="n2mdxst"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="starwars"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="terminator"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="tron"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="warriors"] input[type="range"]::-webkit-slider-runnable-track,
+:root[data-theme="worldmaps"] input[type="range"]::-webkit-slider-runnable-track,
 :root[data-theme="startrek"] input[type="range"]::-webkit-slider-runnable-track {
   background: var(--slider-track-img) repeat-x center !important;
   background-size: auto 100% !important;
@@ -1365,6 +3023,30 @@ input[type="range"]::-moz-range-thumb {
 :root[data-theme="openhpsdrgray"] input[type="range"]::-webkit-slider-thumb,
 :root[data-theme="yaesu"] input[type="range"]::-webkit-slider-thumb,
 :root[data-theme="matrix"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="anansmart"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="xmas"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="highvisual"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="ik3vig"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="n2mdxhl2"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="n2mdxmics"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="rz1zr"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="alienpred"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="apache"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="circuit"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="joker"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="kiss"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="kiss2"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="ledzep"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="maiden"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="metallica"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="nascar"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="riddler"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="n2mdxst"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="starwars"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="terminator"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="tron"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="warriors"] input[type="range"]::-webkit-slider-thumb,
+:root[data-theme="worldmaps"] input[type="range"]::-webkit-slider-thumb,
 :root[data-theme="startrek"] input[type="range"]::-webkit-slider-thumb {
   background: var(--slider-thumb-img) no-repeat center !important;
   background-size: contain !important;
@@ -1384,6 +3066,30 @@ input[type="range"]::-moz-range-thumb {
 :root[data-theme="openhpsdrgray"] input[type="range"]::-moz-range-track,
 :root[data-theme="yaesu"] input[type="range"]::-moz-range-track,
 :root[data-theme="matrix"] input[type="range"]::-moz-range-track,
+:root[data-theme="anansmart"] input[type="range"]::-moz-range-track,
+:root[data-theme="xmas"] input[type="range"]::-moz-range-track,
+:root[data-theme="highvisual"] input[type="range"]::-moz-range-track,
+:root[data-theme="ik3vig"] input[type="range"]::-moz-range-track,
+:root[data-theme="n2mdxhl2"] input[type="range"]::-moz-range-track,
+:root[data-theme="n2mdxmics"] input[type="range"]::-moz-range-track,
+:root[data-theme="rz1zr"] input[type="range"]::-moz-range-track,
+:root[data-theme="alienpred"] input[type="range"]::-moz-range-track,
+:root[data-theme="apache"] input[type="range"]::-moz-range-track,
+:root[data-theme="circuit"] input[type="range"]::-moz-range-track,
+:root[data-theme="joker"] input[type="range"]::-moz-range-track,
+:root[data-theme="kiss"] input[type="range"]::-moz-range-track,
+:root[data-theme="kiss2"] input[type="range"]::-moz-range-track,
+:root[data-theme="ledzep"] input[type="range"]::-moz-range-track,
+:root[data-theme="maiden"] input[type="range"]::-moz-range-track,
+:root[data-theme="metallica"] input[type="range"]::-moz-range-track,
+:root[data-theme="nascar"] input[type="range"]::-moz-range-track,
+:root[data-theme="riddler"] input[type="range"]::-moz-range-track,
+:root[data-theme="n2mdxst"] input[type="range"]::-moz-range-track,
+:root[data-theme="starwars"] input[type="range"]::-moz-range-track,
+:root[data-theme="terminator"] input[type="range"]::-moz-range-track,
+:root[data-theme="tron"] input[type="range"]::-moz-range-track,
+:root[data-theme="warriors"] input[type="range"]::-moz-range-track,
+:root[data-theme="worldmaps"] input[type="range"]::-moz-range-track,
 :root[data-theme="startrek"] input[type="range"]::-moz-range-track {
   background: var(--slider-track-img) repeat-x center !important;
   background-size: auto 100% !important;
@@ -1400,6 +3106,30 @@ input[type="range"]::-moz-range-thumb {
 :root[data-theme="openhpsdrgray"] input[type="range"]::-moz-range-thumb,
 :root[data-theme="yaesu"] input[type="range"]::-moz-range-thumb,
 :root[data-theme="matrix"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="anansmart"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="xmas"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="highvisual"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="ik3vig"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="n2mdxhl2"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="n2mdxmics"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="rz1zr"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="alienpred"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="apache"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="circuit"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="joker"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="kiss"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="kiss2"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="ledzep"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="maiden"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="metallica"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="nascar"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="riddler"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="n2mdxst"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="starwars"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="terminator"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="tron"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="warriors"] input[type="range"]::-moz-range-thumb,
+:root[data-theme="worldmaps"] input[type="range"]::-moz-range-thumb,
 :root[data-theme="startrek"] input[type="range"]::-moz-range-thumb {
   background: var(--slider-thumb-img) no-repeat center !important;
   background-size: contain !important;

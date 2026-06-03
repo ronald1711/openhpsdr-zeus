@@ -37,7 +37,31 @@ export type ThemeId =
   | 'seamoss'
   | 'darkmetal'
   | 'openhpsdrgray'
-  | 'yaesu';
+  | 'yaesu'
+  | 'anansmart'
+  | 'xmas'
+  | 'highvisual'
+  | 'ik3vig'
+  | 'n2mdxhl2'
+  | 'n2mdxmics'
+  | 'rz1zr'
+  | 'alienpred'
+  | 'apache'
+  | 'circuit'
+  | 'joker'
+  | 'kiss'
+  | 'kiss2'
+  | 'ledzep'
+  | 'maiden'
+  | 'metallica'
+  | 'nascar'
+  | 'riddler'
+  | 'n2mdxst'
+  | 'starwars'
+  | 'terminator'
+  | 'tron'
+  | 'warriors'
+  | 'worldmaps';
 
 // Tokens we expose in the operator-facing colour-tweak UI. Two groups:
 //   - ACCENT tokens — the "feel" tokens an operator notices: accent for
