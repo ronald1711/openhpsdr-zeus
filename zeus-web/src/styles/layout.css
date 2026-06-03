@@ -111,6 +111,7 @@ html[data-ui-scale="150"] .app { zoom: 150%; height: 66.6667vh; width: 66.6667vw
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-width: thin;
 }
 .left-layout-bar .lb-empty {
